@@ -7271,27 +7271,6 @@ Transform:
   m_Father: {fileID: 1528860517}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &486705538 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1539347422, guid: 35ce6276026721043a584e4931049f9a, type: 3}
-  m_PrefabInstance: {fileID: 7870763151324259135}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &486705541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486705538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b74143ff6b4c254f8ac7aa8ed0a8f24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyMaxHealth: 2
-  deathEffect: {fileID: 764114713916939417, guid: 50695edd7ed94824aa74e579405b2360, type: 3}
-  portal: {fileID: 394597343}
-  levelTrigger: {fileID: 1267885250}
 --- !u!1 &487968162
 GameObject:
   m_ObjectHideFlags: 0
@@ -18339,11 +18318,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067015105156, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000031175418
+      value: 0.000000031170714
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067015105156, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000008960395
+      value: -0.000000008946625
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067704210770, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.y
