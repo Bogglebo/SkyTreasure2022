@@ -15,6 +15,7 @@ TagManager:
   - Powerup
   - Enemy
   - ForceField
+  - Slider
   layers:
   - Default
   - TransparentFX
