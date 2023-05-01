@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1539347423}
   - component: {fileID: 1539347425}
-  - component: {fileID: 1539347424}
   - component: {fileID: 1539347426}
   m_Layer: 0
   m_Name: EnemyDamageBox
@@ -46,18 +45,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4073633, y: 0.26796785, z: 0.29967088}
   m_Center: {x: 0.024275959, y: 0.04908, z: 0.035799563}
---- !u!114 &1539347424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1539347422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8ea36b817b6b044849a8199794ab6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1539347426
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -148,7 +135,6 @@ MonoBehaviour:
   knockBackLength: 0.5
   knockbackPower: {x: 1, y: 7}
   knockedBack: 0
-  stopMove: 0
 --- !u!1001 &7870763153081826977
 PrefabInstance:
   m_ObjectHideFlags: 0

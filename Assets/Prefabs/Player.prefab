@@ -74,8 +74,6 @@ MonoBehaviour:
   knockBackLength: 0.5
   knockbackPower: {x: 1, y: 7}
   knockedBack: 0
-  playerPieces: []
-  stopMove: 0
 --- !u!1001 &1838098564619246613
 PrefabInstance:
   m_ObjectHideFlags: 0

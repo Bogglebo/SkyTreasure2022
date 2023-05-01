@@ -19,10 +19,10 @@ public class EnemyHealthController : MonoBehaviour
     public GameObject portal;
     public GameObject levelTrigger;
 
-    private void Awake()
-    {
-        //instance = this;
-    }
+    //private void Awake()
+    //{
+    //    //instance = this;
+    //}
 
     // Start is called before the first frame update
     void Start()

@@ -11729,6 +11729,7 @@ GameObject:
   - component: {fileID: 1138211715}
   - component: {fileID: 1138211714}
   - component: {fileID: 1138211713}
+  - component: {fileID: 1138211717}
   m_Layer: 0
   m_Name: Goblin (1)
   m_TagString: Enemy
@@ -11832,6 +11833,18 @@ NavMeshAgent:
   m_BaseOffset: -0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1138211717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138211711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d604e8540215e1c428a692443786c1da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1144017161
 GameObject:
   m_ObjectHideFlags: 0
@@ -12299,6 +12312,7 @@ GameObject:
   - component: {fileID: 1204010412}
   - component: {fileID: 1204010411}
   - component: {fileID: 1204010410}
+  - component: {fileID: 1204010414}
   m_Layer: 0
   m_Name: Goblin (2)
   m_TagString: Enemy
@@ -12402,6 +12416,18 @@ NavMeshAgent:
   m_BaseOffset: -0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1204010414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204010408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d604e8540215e1c428a692443786c1da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1213013552
 GameObject:
   m_ObjectHideFlags: 0
@@ -15374,6 +15400,7 @@ GameObject:
   - component: {fileID: 1714400382}
   - component: {fileID: 1714400381}
   - component: {fileID: 1714400380}
+  - component: {fileID: 1714400384}
   m_Layer: 0
   m_Name: Goblin (3)
   m_TagString: Enemy
@@ -15477,6 +15504,18 @@ NavMeshAgent:
   m_BaseOffset: -0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1714400384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714400378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d604e8540215e1c428a692443786c1da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1715658623
 GameObject:
   m_ObjectHideFlags: 0
@@ -15741,6 +15780,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8051460354830859627, guid: f056d3493b91cea479cf9cebacf5e27d, type: 3}
   m_PrefabInstance: {fileID: 2751708922304155914}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1743011207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743011202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d604e8540215e1c428a692443786c1da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1747240017
 GameObject:
   m_ObjectHideFlags: 0
@@ -15908,6 +15959,7 @@ GameObject:
   - component: {fileID: 1770734887}
   - component: {fileID: 1770734886}
   - component: {fileID: 1770734885}
+  - component: {fileID: 1770734889}
   m_Layer: 0
   m_Name: Goblin (4)
   m_TagString: Enemy
@@ -16011,6 +16063,18 @@ NavMeshAgent:
   m_BaseOffset: -0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1770734889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770734883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d604e8540215e1c428a692443786c1da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1771217440
 GameObject:
   m_ObjectHideFlags: 0
@@ -18304,27 +18368,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1719753067015105156, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.952017
+      value: 0.95201695
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067015105156, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3060454
+      value: 0.30604532
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067015105156, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000031175418
+      value: 0.00000003117071
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067015105156, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000008960395
+      value: -0.000000008946624
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067704210770, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000004264514
+      value: 0.000000042852726
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067704210770, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000013468853
+      value: -0.0000000135363365
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067798413697, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_Follow
@@ -20958,6 +21022,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1539347422, guid: 35ce6276026721043a584e4931049f9a, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7870763151455457726, guid: 35ce6276026721043a584e4931049f9a, type: 3}
       propertyPath: m_RootOrder
       value: 5
