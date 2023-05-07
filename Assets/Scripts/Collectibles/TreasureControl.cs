@@ -13,7 +13,7 @@ public class TreasureControl : MonoBehaviour
         chestClosed.SetActive(true);
         chestOpen.SetActive(false);
         chestCoins.SetActive(false);
-    }
+     }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -33,5 +33,8 @@ public class TreasureControl : MonoBehaviour
         chestCoins.SetActive(false);
         chestOpen.SetActive(false);
         this.GetComponentInParent<ParticleSystem>().Stop();
+        GameObject disableTreasure = GameObject.Find("TreasureChest");
+        BoxCollider boxCollider = disableTreasure.GetComponent<BoxCollider>();
+        boxCollider.enabled = false;
     }
 }
