@@ -5,7 +5,7 @@ public class EnemyHealthController : MonoBehaviour
 {
 
     // Create a static instance of the EnemyHealthController 
-    // public static EnemyHealthController instance;
+    public static EnemyHealthController instance;
 
     // Int to count number of enemies killed up to 5
     public static int enemyCount = 0;
@@ -19,10 +19,10 @@ public class EnemyHealthController : MonoBehaviour
     public GameObject portal;
     public GameObject levelTrigger;
 
-    //private void Awake()
-    //{
-    //    //instance = this;
-    //}
+    private void Awake()
+    {
+        //instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +57,10 @@ public class EnemyHealthController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EnemyDamaged();
+        if (other.CompareTag("Player"))
+        {
+            EnemyDamaged();
+
+        }
     }
 }

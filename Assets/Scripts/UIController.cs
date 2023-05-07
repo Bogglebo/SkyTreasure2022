@@ -7,7 +7,7 @@ public class UIController : MonoBehaviour
     // Static variable accesible from anywhere in the game
     public static int theScore;
 
-    // Create a static instance of the Main Camera 
+    // Create a static instance of the UI Controller 
     public static UIController instance;
 
     // UI variables containing health and score

@@ -13,6 +13,9 @@ public class SystemController : MonoBehaviour
     // Game object for the death particle effect
     public GameObject deathEffect;
 
+    // Variables to access other controller instances
+    private PlayerController playerController;
+
     // Level to load at end of level
     public string nextLevel;
 
@@ -21,6 +24,8 @@ public class SystemController : MonoBehaviour
     {
         // Set the SystemController to this instance
         instance = this;
+        // Set the variable for the PlayerController instance
+        playerController = PlayerController.instance;
     }
 
     // Start is called before the first frame update
@@ -30,7 +35,7 @@ public class SystemController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         // Set the respawn position when the player dies
-        respawnPosition = SystemController.instance.transform.position;
+        respawnPosition = instance.transform.position;
         // Set the camera respawn position
         cameraSpawnPosition = CameraController.instance.transform.position;
     }
@@ -54,19 +59,23 @@ public class SystemController : MonoBehaviour
     // Start a timer on a separate thread from the main update
     public IEnumerator RespawnCoroutine()
     {
-        PlayerController.instance.gameObject.SetActive(false);
+        // Disable the player controller and play the death sound effect
+        playerController.gameObject.SetActive(false);
         AudioController.instance.PlayFX(4);
+        // Fade the UI to black
         UIController.instance.fadeToBlack = true;
         // Create an instance of the death effect adjusting to the middle of the player
-        Instantiate(deathEffect, PlayerController.instance.transform.position +
-            new Vector3(0f, 1f, 0f), PlayerController.instance.transform.rotation);
+        Instantiate(deathEffect, playerController.transform.position +
+            new Vector3(0f, 1f, 0f), playerController.transform.rotation);
         // Deactivate the player and wait for 2 seconds before respawning
         yield return new WaitForSeconds(2f);
+        // Reset the player's health and fade the UI back in
         HealthController.instance.ResetHealth();
         UIController.instance.fadeFromBlack = true;
-        PlayerController.instance.transform.position = respawnPosition;
+        // Respawn the player and camera at their designated positions
+        playerController.transform.position = respawnPosition;
         CameraController.instance.transform.position = cameraSpawnPosition;
-        PlayerController.instance.gameObject.SetActive(true);
+        playerController.gameObject.SetActive(true);
     }
 
     // Set the respawn point of the player to be used with checkpoints
