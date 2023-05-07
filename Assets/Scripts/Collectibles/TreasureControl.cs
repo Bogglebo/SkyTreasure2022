@@ -33,6 +33,7 @@ public class TreasureControl : MonoBehaviour
         chestCoins.SetActive(false);
         chestOpen.SetActive(false);
         this.GetComponentInParent<ParticleSystem>().Stop();
+        // Disable box collider to prevent treasure chest respawning
         GameObject disableTreasure = GameObject.Find("TreasureChest");
         BoxCollider boxCollider = disableTreasure.GetComponent<BoxCollider>();
         boxCollider.enabled = false;

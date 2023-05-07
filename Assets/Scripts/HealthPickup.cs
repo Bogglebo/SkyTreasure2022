@@ -20,6 +20,7 @@ public class HealthPickup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            AudioController.instance.PlayFX(6);
             Destroy(gameObject);
 
             if (fullHeal)       // Heal to full amount
