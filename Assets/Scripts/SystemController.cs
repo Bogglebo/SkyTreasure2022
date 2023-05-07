@@ -34,8 +34,19 @@ public class SystemController : MonoBehaviour
         // Make the mouse invisible during gameplay Esc to reinstate
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        // Set the respawn position when the player dies
-        respawnPosition = instance.transform.position;
+
+        // Set an alternative respawn position for Level01Boss Fight
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == "Level01Boss")
+        {
+            respawnPosition = playerController.transform.position;
+        }
+        else
+        {
+            // Set the respawn position when the player dies on levels
+            respawnPosition = instance.transform.position;
+        }
+
         // Set the camera respawn position
         cameraSpawnPosition = CameraController.instance.transform.position;
     }

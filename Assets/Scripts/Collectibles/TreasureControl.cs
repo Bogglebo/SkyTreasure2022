@@ -13,7 +13,7 @@ public class TreasureControl : MonoBehaviour
         chestClosed.SetActive(true);
         chestOpen.SetActive(false);
         chestCoins.SetActive(false);
-     }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
