@@ -37,9 +37,9 @@ public class HealthController : MonoBehaviour
         // Reduce the score 
         ScoreController.instance.UpdateScore(-50);
         // If the score becomes negative set it to 0 & respawn
-        if (ScoreController.theScore < 0)
+        if (ScoreController.instance.theScore < 0)
         {
-            ScoreController.theScore = 0;
+            ScoreController.instance.theScore = 0;
             ScoreController.instance.UpdateScore(0);
             SystemController.instance.Respawn();
         }
@@ -59,7 +59,7 @@ public class HealthController : MonoBehaviour
         UpdateUI();
     }
 
-    // Restore health to full
+    // Restore health to full with powerup
     public void ResetHealth()
     {
         currentHealth = maxHealth;

@@ -25,7 +25,7 @@ public class SystemController : MonoBehaviour
         // Set the SystemController to this instance
         instance = this;
         // Set the variable for the PlayerController instance
-        playerController = PlayerController.instance;
+      //  playerController = PlayerController.instance;
     }
 
     // Start is called before the first frame update
@@ -39,7 +39,8 @@ public class SystemController : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName == "Level01Boss")
         {
-            respawnPosition = playerController.transform.position;
+            respawnPosition = PlayerController.instance.transform.position;
+         //   nextLevel = "Level02";
         }
         else
         {
@@ -71,22 +72,22 @@ public class SystemController : MonoBehaviour
     public IEnumerator RespawnCoroutine()
     {
         // Disable the player controller and play the death sound effect
-        playerController.gameObject.SetActive(false);
+        PlayerController.instance.gameObject.SetActive(false);
         AudioController.instance.PlayFX(4);
         // Fade the UI to black
         UIController.instance.fadeToBlack = true;
         // Create an instance of the death effect adjusting to the middle of the player
-        Instantiate(deathEffect, playerController.transform.position +
-            new Vector3(0f, 1f, 0f), playerController.transform.rotation);
+        Instantiate(deathEffect, PlayerController.instance.transform.position +
+            new Vector3(0f, 1f, 0f), PlayerController.instance.transform.rotation);
         // Deactivate the player and wait for 2 seconds before respawning
         yield return new WaitForSeconds(2f);
         // Reset the player's health and fade the UI back in
         HealthController.instance.ResetHealth();
         UIController.instance.fadeFromBlack = true;
         // Respawn the player and camera at their designated positions
-        playerController.transform.position = respawnPosition;
+        PlayerController.instance.transform.position = respawnPosition;
         CameraController.instance.transform.position = cameraSpawnPosition;
-        playerController.gameObject.SetActive(true);
+        PlayerController.instance.gameObject.SetActive(true);
     }
 
     // Set the respawn point of the player to be used with checkpoints
@@ -121,9 +122,11 @@ public class SystemController : MonoBehaviour
     public IEnumerator LevelEnd()
     {
         AudioController.instance.PlayFX(2);
+        PlayerPrefs.SetInt("Player Score", ScoreController.instance.theScore);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        Debug.Log("Next Level to load is: " + nextLevel);
         SceneManager.LoadScene(nextLevel);
     }
 }
