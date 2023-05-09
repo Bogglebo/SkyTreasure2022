@@ -908,6 +908,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoblinBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: eb71ef3095382b042ba4b1a855d7f068, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d70c6537be53cd64297bbf9141a6ae0b, type: 2}
+    - target: {fileID: 5866666021909216657, guid: eb71ef3095382b042ba4b1a855d7f068, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb71ef3095382b042ba4b1a855d7f068, type: 3}
 --- !u!1 &1040484078
