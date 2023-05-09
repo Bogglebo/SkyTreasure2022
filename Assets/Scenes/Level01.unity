@@ -18498,19 +18498,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067015105156, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000021262982
+      value: -0.000000021585434
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067015105156, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000040966732
+      value: 0.000000004140297
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067704210770, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000033258495
+      value: -0.000000033129517
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067704210770, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000008318486
+      value: 0.000000008301035
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067798413697, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_Follow
@@ -18546,11 +18546,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067891562056, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00053597434
+      value: -0.0005359755
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067891562056, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0001630696
+      value: 0.00016306994
       objectReference: {fileID: 0}
     - target: {fileID: 1719753067891562056, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18574,11 +18574,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1719753068492263690, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000035900136
+      value: -0.00000003733441
       objectReference: {fileID: 0}
     - target: {fileID: 1719753068492263690, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000000836785
+      value: 0.000000008785168
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
@@ -19518,7 +19518,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4963559286616704628}
   - component: {fileID: 4963559286616704630}
-  - component: {fileID: 4963559286616704631}
   - component: {fileID: 4963559286616704632}
   m_Layer: 0
   m_Name: StageObstacle
@@ -19540,18 +19539,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 17.115116, y: 1.177165, z: 5.9334526}
   m_Center: {x: 9.570719, y: 0.8858447, z: 2.4667263}
---- !u!114 &4963559286616704631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4963559286616704629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d48888cbca5788247bcf74a2e5e4cfc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!208 &4963559286616704632
 NavMeshObstacle:
   m_ObjectHideFlags: 0
