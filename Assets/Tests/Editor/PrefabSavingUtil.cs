@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Reflection;
-using UnityEditor.Experimental.SceneManagement;
+
 
 public class PrefabSavingUtil
 {
 
-    public static void SavePrefab(PrefabStage prefabStage)
+    public static void SavePrefab(UnityEditor.SceneManagement.PrefabStage prefabStage)
     {
         if (prefabStage == null)
             throw new ArgumentNullException();
