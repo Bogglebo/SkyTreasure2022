@@ -9,7 +9,6 @@ public class LevelEnd : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Script is called ");
             StartCoroutine(SystemController.instance.LevelEnd());
         }
     }
