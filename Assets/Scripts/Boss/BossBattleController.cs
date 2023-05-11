@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossBattleController : MonoBehaviour
 {
     // Variable to hold boss health values
     public int maxHealth;
     private int currentHealth;
+    public Slider healthSlider;
 
     public GameObject activateExitPortal;
 
@@ -14,6 +16,8 @@ public class BossBattleController : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
 
     }
 
@@ -26,11 +30,14 @@ public class BossBattleController : MonoBehaviour
     public void DamageBoss()
     {
         currentHealth--;
+
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
+            currentHealth = 0;
             activateExitPortal.SetActive(true);
-
         }
+        healthSlider.value = currentHealth;
+
     }
 }
