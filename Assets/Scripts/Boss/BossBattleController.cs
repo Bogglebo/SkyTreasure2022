@@ -19,6 +19,13 @@ public class BossBattleController : MonoBehaviour
     // Wait time in seconds for boss respawn after damage
     public float waitBeforeSpawn;
 
+    // Variable to ensure boss respawns at a different point
+    private int lastSpawnPoint;
+
+    // Object to activate particle effect on the boss
+    public GameObject bossEffect;
+
+    // Object to activate exit portal to next level
     public GameObject activateExitPortal;
 
     // Start is called before the first frame update
@@ -27,6 +34,13 @@ public class BossBattleController : MonoBehaviour
         currentHealth = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
+
+        // Activate particle effect when boss appears
+        if (bossEffect != null)
+        {
+            Instantiate(bossEffect, bossChild.transform.position, bossChild.transform.rotation);
+        }
+
 
     }
 
@@ -42,6 +56,7 @@ public class BossBattleController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            AudioController.instance.PlayFX(2);
             gameObject.SetActive(false);
             currentHealth = 0;
             activateExitPortal.SetActive(true);
@@ -49,6 +64,7 @@ public class BossBattleController : MonoBehaviour
         {
            StartCoroutine(SpawnCoroutine() );
         }
+        AudioController.instance.PlayFX(7);
         healthSlider.value = currentHealth;
     }
 
@@ -56,10 +72,35 @@ public class BossBattleController : MonoBehaviour
     IEnumerator SpawnCoroutine()
     {
         bossChild.SetActive(false);
+        // Activate the particle effect on the boss when he changes position
+        if (bossEffect != null)
+        {
+            Instantiate(bossEffect, bossChild.transform.position, bossChild.transform.rotation);
+        }
         yield return new WaitForSeconds(waitBeforeSpawn);
+
         int pointSelect = Random.Range(0, spawnPoints.Length);
+
+        // Variable used to check the boss respawn while loop doesn't repeat indefinitely
+        int checkPosition = 0;
+
+        while (pointSelect == lastSpawnPoint &&  checkPosition < 100)
+        {
+            pointSelect = Random.Range(0, spawnPoints.Length);
+            checkPosition++;
+        }
+
+        lastSpawnPoint = pointSelect;
+
         bossChild.transform.position = spawnPoints[pointSelect].position;
         bossChild.SetActive(true) ;
+
+        // When boss reappears activate boss particle effect
+        if (bossEffect != null)
+        {
+            Instantiate(bossEffect, bossChild.transform.position, bossChild.transform.rotation);
+        }
+
     }
 
 
