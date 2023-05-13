@@ -28,6 +28,13 @@ public class BossBattleController : MonoBehaviour
     // Object to activate exit portal to next level
     public GameObject activateExitPortal;
 
+    // Spell object for casting
+    public GameObject theSpell;
+    public Transform spellPoint;
+    public float timeBetweenSpells;
+    private float spellCounter;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,13 +48,26 @@ public class BossBattleController : MonoBehaviour
             Instantiate(bossEffect, bossChild.transform.position, bossChild.transform.rotation);
         }
 
+        spellCounter = timeBetweenSpells;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (bossChild.activeSelf)
+        {
+            bossChild.transform.LookAt(PlayerController.instance.transform);
+            // Amend Boss rotation so he doesn't lay down when Player is in the air
+            bossChild.transform.rotation = Quaternion.Euler(0f, bossChild.transform.rotation.eulerAngles.y,
+                0f);
+            spellCounter -= Time.deltaTime;
+            if (spellCounter <= 0)
+            {
+                Instantiate (theSpell, spellPoint.position, spellPoint.rotation);
+                spellCounter = timeBetweenSpells;
+            }
+        }
     }
 
     public void DamageBoss()

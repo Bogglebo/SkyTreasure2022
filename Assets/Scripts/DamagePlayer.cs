@@ -10,7 +10,8 @@ public class DamagePlayer : MonoBehaviour
             AudioController.instance.PlayFX(3);
             HealthController.instance.Damage();
         }
-        if (gameObject.CompareTag("DamageBox"))
+        if (gameObject.CompareTag("DamageBox")  && 
+            !(other.gameObject.CompareTag("GoblinBlast")))
         {
             Destroy(gameObject);
         }
