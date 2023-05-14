@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -78,7 +79,13 @@ public class BossBattleController : MonoBehaviour
         {
             AudioController.instance.PlayFX(2);
             gameObject.SetActive(false);
+            if (bossEffect != null)
+            {
+                Instantiate(bossEffect, bossChild.transform.position, bossChild.transform.rotation);
+            }
             currentHealth = 0;
+            // Update the score when the boss dies
+            ScoreController.instance.UpdateScore(500);
             activateExitPortal.SetActive(true);
         } else
         {
@@ -120,8 +127,5 @@ public class BossBattleController : MonoBehaviour
         {
             Instantiate(bossEffect, bossChild.transform.position, bossChild.transform.rotation);
         }
-
     }
-
-
 }

@@ -10,6 +10,7 @@ public class DamagePlayer : MonoBehaviour
             AudioController.instance.PlayFX(3);
             HealthController.instance.Damage();
         }
+        // Remove the box from the game if the player collides with it
         if (gameObject.CompareTag("DamageBox")  && 
             !(other.gameObject.CompareTag("GoblinBlast")))
         {

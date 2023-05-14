@@ -13,8 +13,12 @@ public class SystemController : MonoBehaviour
     // Game object for the death particle effect
     public GameObject deathEffect;
 
-    // Variables to access other controller instances
-    private PlayerController playerController;
+    // Boolean to identify Boss level for refilling health
+    // Set to true in the inspector for the relevant scenes
+    public bool reloadBossHealth;
+
+    //// Variables to access other controller instances
+    //private PlayerController playerController;
 
     // Level to load at end of level
     public string nextLevel;
@@ -24,8 +28,6 @@ public class SystemController : MonoBehaviour
     {
         // Set the SystemController to this instance
         instance = this;
-        // Set the variable for the PlayerController instance
-      //  playerController = PlayerController.instance;
     }
 
     // Start is called before the first frame update
@@ -40,7 +42,6 @@ public class SystemController : MonoBehaviour
         if (sceneName == "Level01Boss")
         {
             respawnPosition = PlayerController.instance.transform.position;
-         //   nextLevel = "Level02";
         }
         else
         {
@@ -81,13 +82,22 @@ public class SystemController : MonoBehaviour
             new Vector3(0f, 1f, 0f), PlayerController.instance.transform.rotation);
         // Deactivate the player and wait for 2 seconds before respawning
         yield return new WaitForSeconds(2f);
-        // Reset the player's health and fade the UI back in
-        HealthController.instance.ResetHealth();
-        UIController.instance.fadeFromBlack = true;
-        // Respawn the player and camera at their designated positions
-        PlayerController.instance.transform.position = respawnPosition;
-        CameraController.instance.transform.position = cameraSpawnPosition;
-        PlayerController.instance.gameObject.SetActive(true);
+        //  Check for the boss level to reset health for player and boss
+        if (reloadBossHealth)
+        {
+            PlayerPrefs.SetInt("Player Score", ScoreController.instance.theScore);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        } else
+        {
+            // Reset the player's health and fade the UI back in
+            HealthController.instance.ResetHealth();
+            UIController.instance.fadeFromBlack = true;
+            // Respawn the player and camera at their designated positions
+            PlayerController.instance.transform.position = respawnPosition;
+            CameraController.instance.transform.position = cameraSpawnPosition;
+            PlayerController.instance.gameObject.SetActive(true);
+        }
+
     }
 
     // Set the respawn point of the player to be used with checkpoints
