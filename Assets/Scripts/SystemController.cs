@@ -16,9 +16,8 @@ public class SystemController : MonoBehaviour
     // Boolean to identify Boss level for refilling health
     // Set to true in the inspector for the relevant scenes
     public bool reloadBossHealth;
-
-    //// Variables to access other controller instances
-    //private PlayerController playerController;
+    // Flag to prevent the boss respawning after death
+    public bool bossKilled;
 
     // Level to load at end of level
     public string nextLevel;
@@ -82,8 +81,8 @@ public class SystemController : MonoBehaviour
             new Vector3(0f, 1f, 0f), PlayerController.instance.transform.rotation);
         // Deactivate the player and wait for 2 seconds before respawning
         yield return new WaitForSeconds(2f);
-        //  Check for the boss level to reset health for player and boss
-        if (reloadBossHealth)
+        //  If the boss hasn't already been killed, reset boss to full health when player dies
+        if ((reloadBossHealth) && (!bossKilled))
         {
             PlayerPrefs.SetInt("Player Score", ScoreController.instance.theScore);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

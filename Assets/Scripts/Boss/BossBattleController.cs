@@ -84,9 +84,10 @@ public class BossBattleController : MonoBehaviour
                 Instantiate(bossEffect, bossChild.transform.position, bossChild.transform.rotation);
             }
             currentHealth = 0;
-            // Update the score when the boss dies
+            // Update the score when the boss dies and activate the level end
             ScoreController.instance.UpdateScore(500);
             activateExitPortal.SetActive(true);
+            SystemController.instance.bossKilled = true;
         } else
         {
            StartCoroutine(SpawnCoroutine() );
