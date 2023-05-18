@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         waitCounter = waitAtPoint;
+        currentPatrolPoint = Random.Range(0, patrolPoints.Length);
     }
 
     // Update is called once per frame
