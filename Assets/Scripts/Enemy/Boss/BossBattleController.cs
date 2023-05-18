@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,7 +63,7 @@ public class BossBattleController : MonoBehaviour
             spellCounter -= Time.deltaTime;
             if (spellCounter <= 0)
             {
-                Instantiate (theSpell, spellPoint.position, spellPoint.rotation);
+                Instantiate(theSpell, spellPoint.position, spellPoint.rotation);
                 spellCounter = timeBetweenSpells;
             }
         }
@@ -88,9 +86,10 @@ public class BossBattleController : MonoBehaviour
             ScoreController.instance.UpdateScore(500);
             activateExitPortal.SetActive(true);
             SystemController.instance.bossKilled = true;
-        } else
+        }
+        else
         {
-           StartCoroutine(SpawnCoroutine() );
+            StartCoroutine(SpawnCoroutine());
         }
         AudioController.instance.PlayFX(7);
         healthSlider.value = currentHealth;
@@ -112,7 +111,7 @@ public class BossBattleController : MonoBehaviour
         // Variable used to check the boss respawn while loop doesn't repeat indefinitely
         int checkPosition = 0;
 
-        while (pointSelect == lastSpawnPoint &&  checkPosition < 100)
+        while (pointSelect == lastSpawnPoint && checkPosition < 100)
         {
             pointSelect = Random.Range(0, spawnPoints.Length);
             checkPosition++;
@@ -121,7 +120,7 @@ public class BossBattleController : MonoBehaviour
         lastSpawnPoint = pointSelect;
 
         bossChild.transform.position = spawnPoints[pointSelect].position;
-        bossChild.SetActive(true) ;
+        bossChild.SetActive(true);
 
         // When boss reappears activate boss particle effect
         if (bossEffect != null)

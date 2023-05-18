@@ -86,7 +86,8 @@ public class SystemController : MonoBehaviour
         {
             PlayerPrefs.SetInt("Player Score", ScoreController.instance.theScore);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        } else
+        }
+        else
         {
             // Reset the player's health and fade the UI back in
             HealthController.instance.ResetHealth();

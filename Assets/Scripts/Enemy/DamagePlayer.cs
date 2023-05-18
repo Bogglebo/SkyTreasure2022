@@ -11,7 +11,7 @@ public class DamagePlayer : MonoBehaviour
             HealthController.instance.Damage();
         }
         // Remove the box from the game if the player collides with it
-        if (gameObject.CompareTag("DamageBox")  && 
+        if (gameObject.CompareTag("DamageBox") &&
             !(other.gameObject.CompareTag("GoblinBlast")))
         {
             Destroy(gameObject);

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossActivator : MonoBehaviour
@@ -14,7 +12,7 @@ public class BossActivator : MonoBehaviour
         {
             AudioController.instance.PlayFX(7);
             actionBoss.SetActive(true);
-            
+
             // Deactivate the trigger area once the boss is active
             gameObject.SetActive(false);
         }

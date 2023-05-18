@@ -24,7 +24,8 @@ public class ScoreController : MonoBehaviour
             theScore = PlayerPrefs.GetInt("Player Score");
             UIController.instance.scoreText.text = "Score " + theScore;
             Debug.Log("We are not in Level 1 and the score is " + theScore);
-        } else
+        }
+        else
         {
             Debug.Log("We are in Level 1 and the score should be " + theScore);
             UpdateScore(theScore);
