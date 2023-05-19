@@ -1,18 +1,15 @@
 using UnityEngine;
 
 // Script to control enemy health
-public class EnemyHealthController : MonoBehaviour
+public class WarriorHealthController : MonoBehaviour
 {
 
     // Create a static instance of the EnemyHealthController 
-    public static EnemyHealthController instance;
+    public static WarriorHealthController instance;
 
     // Int to count number of enemies killed up to 5
     public static int enemyCount = 0;
 
-    // Maximum health of enemy
-    public int enemyMaxHealth = 2;
-    private int enemyCurrentHealth;
     // Enemy death effect
     public GameObject deathEffect;
     // Activate Level End portal and trigger
@@ -27,7 +24,6 @@ public class EnemyHealthController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //enemyCurrentHealth = enemyMaxHealth;
         enemyCount = 0;
         portal.SetActive(false);
         levelTrigger.SetActive(false);
@@ -35,9 +31,6 @@ public class EnemyHealthController : MonoBehaviour
 
     public void EnemyDamaged()
     {
-        enemyCurrentHealth--;
-        if (enemyCurrentHealth <= 0)
-        {
             AudioController.instance.PlayFX(5);
             ScoreController.instance.UpdateScore(150);
             Destroy(gameObject);
@@ -52,15 +45,14 @@ public class EnemyHealthController : MonoBehaviour
                 portal.SetActive(true);
                 levelTrigger.SetActive(true);
             }
-        }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            EnemyDamaged();
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        EnemyDamaged();
 
-        }
-    }
+    //    }
+    //}
 }

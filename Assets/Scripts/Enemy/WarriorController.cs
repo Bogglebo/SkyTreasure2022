@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Assertions.Must;
 
 public class WarriorController : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class WarriorController : MonoBehaviour
     // Get player controller
     private PlayerController player;
 
+    // Get enemy health controller
+    private WarriorHealthController warriorHealth;
+
     // Set up AI State system for warriors
     public enum AIState
     {
@@ -36,10 +40,11 @@ public class WarriorController : MonoBehaviour
     private float waitCounter;  // Countdown how long before warrior stops waiting
     public float pauseTime; // Time to pause before switching AI state
     private float pauseCounter;  // Countdown for pauseTime
+    public float hopForce, waitToChase;  // Time to pause before chasing player
+    private float chaseWaitCounter; // Countdown for  wait to chase
 
     // Variables to set distance from player to trigger and end chase
     public float chaseDistance, pursuitSpeed, chaseRange;
-
 
 
     // Start is called before the first frame update
@@ -47,8 +52,10 @@ public class WarriorController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player = PlayerController.instance;  // Access the player controller static instance
+        warriorHealth = WarriorHealthController.instance;  // Access the enemy health static instance
         currentState = AIState.isIdle;  // Set the warrior default state when the game starts
         waitCounter = waitTime;  // Initialise the wait Time for countdown
+        chaseWaitCounter = waitToChase;
     }
 
     // Update is called once per frame
@@ -102,15 +109,24 @@ public class WarriorController : MonoBehaviour
             case AIState.isChasing:  // Warrior is chasing the player
 
                 lookTarget = player.transform.position;
-                yStore = theRB.velocity.y;
-                // Calculate the target point - the current position
-                moveDirection = player.transform.position - transform.position;
-                moveDirection.y = 0f; // No movement up and down
-                moveDirection.Normalize(); // Normalize the move direction
-                                           // Move the rigidbody on the warrior in the calculated direction
-                                           // at the speed specified.  Unity will handle (fps) Time.deltaTime with the Rigidbody
-                theRB.velocity = moveDirection * pursuitSpeed;
-                theRB.velocity = new Vector3(theRB.velocity.x, yStore, theRB.velocity.z);
+
+                if (chaseWaitCounter > 0)
+                {
+                    chaseWaitCounter -= Time.deltaTime;
+                }
+                else
+                {
+                    yStore = theRB.velocity.y;
+                    // Calculate the target point - the current position
+                    moveDirection = player.transform.position - transform.position;
+                    moveDirection.y = 0f; // No movement up and down
+                    moveDirection.Normalize(); // Normalize the move direction
+                                               // Move the rigidbody on the warrior in the calculated direction
+                                               // at the speed specified.  Unity will handle (fps) Time.deltaTime with the Rigidbody
+                    theRB.velocity = moveDirection * pursuitSpeed;
+                    theRB.velocity = new Vector3(theRB.velocity.x, yStore, theRB.velocity.z);
+                }
+
                 // Check if player is out of chase range
                 if (Vector3.Distance(player.transform.position, transform.position) > chaseRange)
                 {
@@ -125,7 +141,7 @@ public class WarriorController : MonoBehaviour
             case AIState.isAttacking:   // Warrior is attacking the player
 
                 break;
-            
+
 
             case AIState.isPausing:    // Pause before switching AI state
 
@@ -143,16 +159,20 @@ public class WarriorController : MonoBehaviour
         }
 
         // Check relative distance to player to calculate whether to chase
-        if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance)
+        if (currentState != AIState.isChasing)
         {
-            currentState = AIState.isChasing;
+            if (Vector3.Distance(player.transform.position, transform.position) <= chaseDistance)
+            {
+                currentState = AIState.isChasing;
+                theRB.velocity = Vector3.up * hopForce;
+                chaseWaitCounter = waitToChase;
+            }
         }
 
         // Ignore the y axis (up and down)
         lookTarget.y = transform.position.y;
 
         // Look at the target
-        //transform.LookAt(lookTarget);
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation
             (lookTarget - transform.position), turnSpeed * Time.deltaTime);
 
@@ -178,4 +198,49 @@ public class WarriorController : MonoBehaviour
             }
         }
     }
+
+    // Check for collision between warrior and player
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+
+    //        Debug.Log("Collision triggerred by Enemy " + collision.gameObject.name);
+
+
+    //        HealthController.instance.Damage();
+    //        AudioController.instance.PlayFX(7);
+    //        PlayerController.instance.Bounce();
+    //    }
+    // }
+
+    // Check for Player jumping on warrior head triggered by box collider  
+    // attached to Player child's feet (Amy's)
+    // Alternatively if the collider is the Player Parent, the warrior hit the player  first
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {  // Player damages warrior
+            Debug.Log("OnTriggerEnger triggerred by Player " + other.name);
+            if (other.name == "Amy")
+            {
+                Debug.Log("This is where Amy hit the warrior on the head");
+                warriorHealth.EnemyDamaged();
+
+                
+
+            } else
+            {  // Warrior damages player
+                if (other.name == "Player")
+                {
+                    Debug.Log("This is where the warrior damaged the player");
+                    Debug.Log("Player still taking damage");
+                }
+            }
+            //Destroy(gameObject);
+        }
+    }
+
+
+
 }
