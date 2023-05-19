@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Assertions.Must;
@@ -18,6 +19,8 @@ public class WarriorController : MonoBehaviour
     public float yStore;
     // Nav Mesh Agent
     NavMeshAgent agent;
+
+    public Animator animator;
 
     // Rigidbody to move the warriors around with basic physics
     public Rigidbody theRB;
@@ -53,6 +56,7 @@ public class WarriorController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         player = PlayerController.instance;  // Access the player controller static instance
         warriorHealth = WarriorHealthController.instance;  // Access the enemy health static instance
+        animator = GetComponent<Animator>();
         currentState = AIState.isIdle;  // Set the warrior default state when the game starts
         waitCounter = waitTime;  // Initialise the wait Time for countdown
         chaseWaitCounter = waitToChase;
@@ -139,6 +143,9 @@ public class WarriorController : MonoBehaviour
 
 
             case AIState.isAttacking:   // Warrior is attacking the player
+                //animator.SetTrigger("Attack");
+                //animator.SetBool("IsMoving", false);
+                //HealthController.instance.Damage();
 
                 break;
 
@@ -199,20 +206,6 @@ public class WarriorController : MonoBehaviour
         }
     }
 
-    // Check for collision between warrior and player
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-
-    //        Debug.Log("Collision triggerred by Enemy " + collision.gameObject.name);
-
-
-    //        HealthController.instance.Damage();
-    //        AudioController.instance.PlayFX(7);
-    //        PlayerController.instance.Bounce();
-    //    }
-    // }
 
     // Check for Player jumping on warrior head triggered by box collider  
     // attached to Player child's feet (Amy's)
@@ -236,12 +229,12 @@ public class WarriorController : MonoBehaviour
                     Debug.Log("This is where the warrior damaged the player");
                     Debug.Log("Player still taking damage");
                     HealthController.instance.Damage();
+                    //currentState = AIState.isAttacking;
+                   
                 }
             }
             //Destroy(gameObject);
         }
     }
-
-
 
 }
