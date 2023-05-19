@@ -221,7 +221,7 @@ public class WarriorController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {  // Player damages warrior
-            Debug.Log("OnTriggerEnger triggerred by Player " + other.name);
+            Debug.Log("OnTriggerEnger triggered by Player " + other.name);
             if (other.name == "Amy")
             {
                 Debug.Log("This is where Amy hit the warrior on the head");
@@ -235,6 +235,7 @@ public class WarriorController : MonoBehaviour
                 {
                     Debug.Log("This is where the warrior damaged the player");
                     Debug.Log("Player still taking damage");
+                    HealthController.instance.Damage();
                 }
             }
             //Destroy(gameObject);

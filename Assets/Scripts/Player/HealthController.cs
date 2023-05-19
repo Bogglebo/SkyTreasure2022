@@ -33,6 +33,8 @@ public class HealthController : MonoBehaviour
     {
         // Reduce health by 1
         currentHealth--;
+        // Play sound
+        AudioController.instance.PlayFX(9);
 
         // Reduce the score 
         ScoreController.instance.UpdateScore(-50);
