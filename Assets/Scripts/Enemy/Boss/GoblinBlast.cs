@@ -19,6 +19,9 @@ public class GoblinBlast : MonoBehaviour
     {
         // Fire the spell in a forward direction
         theRB.velocity = transform.forward * moveSpeed;
+        // Delete the spell after 10 seconds whether or not it collides (to prevent lost instances
+        // sticking around in the scene forever
+        Destroy(gameObject, 10);
     }
 
     // Action to take if spell hits player
