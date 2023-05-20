@@ -71,7 +71,7 @@ public class WarriorController : MonoBehaviour
         {
 
             case AIState.isIdle:    // Warrior is idle
-
+                animator.SetBool("IsMoving", false);
                 // Set the warrior to stationary no vertical movement
                 theRB.velocity = new Vector3(0f, theRB.velocity.y, 0f);
                 // Countdown the wait time
@@ -86,7 +86,7 @@ public class WarriorController : MonoBehaviour
 
 
             case AIState.isPatrolling:  // Warrior is patrolling
-
+                animator.SetBool("IsMoving", true);
                 yStore = theRB.velocity.y;
                 // Calculate the target point - the current position
                 moveDirection = patrolPoints[currentPatrolPoint].position - transform.position;
@@ -143,9 +143,8 @@ public class WarriorController : MonoBehaviour
 
 
             case AIState.isAttacking:   // Warrior is attacking the player
-                //animator.SetTrigger("Attack");
-                //animator.SetBool("IsMoving", false);
-                //HealthController.instance.Damage();
+               animator.SetTrigger("Attack");
+                               //HealthController.instance.Damage();
 
                 break;
 
@@ -213,7 +212,10 @@ public class WarriorController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {  // Player damages warrior
+        {
+            animator.SetBool("IsMoving", false);
+            animator.SetTrigger("Attack");
+            // Player damages warrior
             Debug.Log("OnTriggerEnger triggered by Player " + other.name);
             if (other.name == "Amy")
             {
@@ -229,7 +231,7 @@ public class WarriorController : MonoBehaviour
                     Debug.Log("This is where the warrior damaged the player");
                     Debug.Log("Player still taking damage");
                     HealthController.instance.Damage();
-                    //currentState = AIState.isAttacking;
+                    currentState = AIState.isAttacking;
                    
                 }
             }
