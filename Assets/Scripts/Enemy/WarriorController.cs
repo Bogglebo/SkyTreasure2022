@@ -213,17 +213,15 @@ public class WarriorController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            animator.SetBool("IsMoving", false);
-            animator.SetTrigger("Attack");
+            //animator.SetBool("IsMoving", false);
+            //animator.SetTrigger("Attack");
             // Player damages warrior
-            Debug.Log("OnTriggerEnger triggered by Player " + other.name);
-            if (other.name == "Amy")
+            Debug.Log("OnTriggerEnter triggered with Player " + other.name);
+
+            if (other.name == "Amy")  // The box collider on the player childs feet
             {
                 Debug.Log("This is where Amy hit the warrior on the head");
                 warriorHealth.EnemyDamaged();
-
-                
-
             } else
             {  // Warrior damages player
                 if (other.name == "Player")
