@@ -143,7 +143,9 @@ public class WarriorController : MonoBehaviour
 
 
             case AIState.isAttacking:   // Warrior is attacking the player
-               animator.SetTrigger("Attack");
+                animator.SetBool("IsMoving", false);
+               animator.SetBool("IsAttacking", true);
+                Debug.Log("Warrior is Attacking " + player.name);
                                //HealthController.instance.Damage();
 
                 break;

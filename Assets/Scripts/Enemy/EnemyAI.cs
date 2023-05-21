@@ -39,6 +39,12 @@ public class EnemyAI : MonoBehaviour
     {
         // Calculate the distance between the target and the enemy each frame
         distanceToTarget = Vector3.Distance(target.position, agent.transform.position);
+        
+        if (!isProvoked ) { 
+            animator.SetBool("IsAttacking", false);
+            // Patrol
+        
+        }
 
         // If the player is within the chase range set, pursue the player
         if (distanceToTarget < chaseRange)
@@ -46,6 +52,9 @@ public class EnemyAI : MonoBehaviour
             isProvoked = true;
             EngageTarget();
         }
+
+        // Send the warrior patrolling again 
+        animator.SetBool("IsMoving", false);
     }
 
     // Method to decide whether the enemy should chase or attack the player
@@ -57,23 +66,25 @@ public class EnemyAI : MonoBehaviour
         }
 
         if (distanceToTarget <= agent.stoppingDistance)
-            {
+        { 
                 AttackTarget();
         }
+        isProvoked = false;
     }
 
     // Method to call when enemy is chasing the player
     private void ChaseTarget()
     {
-        animator.SetTrigger("run");
+       // animator.SetBool("IsAttacking", false);
+        animator.SetBool("IsMoving", true);
         agent.SetDestination(target.position);  // Move the enemy to the target's position
     }
 
     // Method to call if enemy gets within attack range of the player
     private void AttackTarget()
     {
-        animator.SetBool("Attack", true);
-        Debug.Log("Enemy " + name + (" is attacking the  " + target.name ));
+        animator.SetBool("IsMoving", false);
+        animator.SetBool("IsAttacking", true);
     }
 
     private void OnDrawGizmosSelected()
