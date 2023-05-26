@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Assertions.Must;
 
-public class WarriorController : MonoBehaviour
+public class WarriorAI : MonoBehaviour
 {
     // How fast the warriors will move
     public float moveSpeed, turnSpeed;
@@ -15,15 +15,20 @@ public class WarriorController : MonoBehaviour
     private Vector3 moveDirection;
     // Variable to stop enemy looking up and down
     private Vector3 lookTarget;
-    // Store a value to smooth rigidbody y value 
-    public float yStore;
+    
+    //// Store a value to smooth rigidbody y value 
+    //public float yStore;
+
     // Nav Mesh Agent
     NavMeshAgent agent;
+
+    // Store the agent's original position
+    private Vector3 originalPosition;
 
     public Animator animator;
 
     // Rigidbody to move the warriors around with basic physics
-    public Rigidbody theRB;
+    //public Rigidbody theRB;
 
     // Get player controller
     private PlayerController player;
@@ -43,7 +48,7 @@ public class WarriorController : MonoBehaviour
     private float waitCounter;  // Countdown how long before warrior stops waiting
     public float pauseTime; // Time to pause before switching AI state
     private float pauseCounter;  // Countdown for pauseTime
-    public float hopForce, waitToChase;  // Time to pause before chasing player
+    public float waitToChase;  // Time to pause before chasing player
     private float chaseWaitCounter; // Countdown for  wait to chase
 
     // Variables to set distance from player to trigger and end chase
@@ -57,23 +62,34 @@ public class WarriorController : MonoBehaviour
         player = PlayerController.instance;  // Access the player controller static instance
         warriorHealth = WarriorHealthController.instance;  // Access the enemy health static instance
         animator = GetComponent<Animator>();
-        currentState = AIState.isIdle;  // Set the warrior default state when the game starts
+        currentState = AIState.isPatrolling;  // Set the warrior default state when the game starts
         waitCounter = waitTime;  // Initialise the wait Time for countdown
         chaseWaitCounter = waitToChase;
+        originalPosition = transform.position; // Warrior's original position
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         // Warrior action to take depending on AIState
         switch (currentState)
         {
 
             case AIState.isIdle:    // Warrior is idle
-                animator.SetBool("IsMoving", false);
-                // Set the warrior to stationary no vertical movement
-                theRB.velocity = new Vector3(0f, theRB.velocity.y, 0f);
+               animator.SetBool("IsMoving", false);
+               // Check to see if the warrior has reached its destination 
+               // if it has, set the destination to the current position and stop movement
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    animator.SetBool("IsMoving", false);
+                    agent.destination = transform.position;
+                    agent.autoBraking = false;      // Disable auto braking
+                } else  // If the warrior hasn't reached its target enable auto-braking to facilitate
+                // a smooth stop at the destination
+                {
+                    agent.autoBraking = true;
+                }
                 // Countdown the wait time
                 waitCounter -= Time.deltaTime;
                 // If wait time has counted down, move to next patrol point
@@ -87,15 +103,10 @@ public class WarriorController : MonoBehaviour
 
             case AIState.isPatrolling:  // Warrior is patrolling
                 animator.SetBool("IsMoving", true);
-                yStore = theRB.velocity.y;
                 // Calculate the target point - the current position
                 moveDirection = patrolPoints[currentPatrolPoint].position - transform.position;
-                moveDirection.y = 0f; // No movement up and down
-                moveDirection.Normalize(); // Normalize the move direction
-                                           // Move the rigidbody on the warrior in the calculated direction
-                                           // at the speed specified.  Unity will handle (fps) Time.deltaTime with the Rigidbody
-                theRB.velocity = moveDirection * moveSpeed;
-                theRB.velocity = new Vector3(theRB.velocity.x, yStore, theRB.velocity.z);
+                // Move the warrior to the patrol point
+                agent.SetDestination(moveDirection);
 
                 // Check proximity to destination point (within 1 world unit)
                 if (Vector3.Distance(transform.position, patrolPoints[currentPatrolPoint].position) <= 1f)
@@ -106,11 +117,13 @@ public class WarriorController : MonoBehaviour
                 {
                     lookTarget = patrolPoints[currentPatrolPoint].position;
                 }
-
                 break;
 
 
             case AIState.isChasing:  // Warrior is chasing the player
+                
+                // Invoke Run animation
+                animator.SetBool("IsMoving", true);
 
                 lookTarget = player.transform.position;
 
@@ -120,31 +133,24 @@ public class WarriorController : MonoBehaviour
                 }
                 else
                 {
-                    yStore = theRB.velocity.y;
                     // Calculate the target point - the current position
                     moveDirection = player.transform.position - transform.position;
-                    moveDirection.y = 0f; // No movement up and down
-                    moveDirection.Normalize(); // Normalize the move direction
-                                               // Move the rigidbody on the warrior in the calculated direction
-                                               // at the speed specified.  Unity will handle (fps) Time.deltaTime with the Rigidbody
-                    theRB.velocity = moveDirection * pursuitSpeed;
-                    theRB.velocity = new Vector3(theRB.velocity.x, yStore, theRB.velocity.z);
+                    agent.SetDestination(moveDirection);
                 }
 
                 // Check if player is out of chase range
                 if (Vector3.Distance(player.transform.position, transform.position) > chaseRange)
                 {
-                    currentState = AIState.isPausing;  // Pause before switching AI State
-                    pauseCounter = pauseTime; //  Set time to pause
-                    theRB.velocity = new Vector3();  // Stop the warrior from moving when paused
+                    agent.SetDestination(moveDirection);
                 }
 
                 break;
 
 
             case AIState.isAttacking:   // Warrior is attacking the player
+                // Stop the run animation and play the attack one
                 animator.SetBool("IsMoving", false);
-               animator.SetTrigger("Attack");
+                animator.SetTrigger("Attack");
                 Debug.Log("Warrior is Attacking " + player.name);
                                //HealthController.instance.Damage();
 
@@ -172,7 +178,6 @@ public class WarriorController : MonoBehaviour
             if (Vector3.Distance(player.transform.position, transform.position) <= chaseDistance)
             {
                 currentState = AIState.isChasing;
-                theRB.velocity = Vector3.up * hopForce;
                 chaseWaitCounter = waitToChase;
             }
         }
@@ -189,22 +194,12 @@ public class WarriorController : MonoBehaviour
     // Calculate the next patrol point
     public void NextPatrolPoint()
     {
-        // Randomly decide whether to wait or not
-        // If random number is less than waitChance set in insepctor, otherwise move to next point
-        if (Random.Range(0f, 100f) < waitChance)
-        {
-            waitCounter = waitTime;
-            currentState = AIState.isIdle;
-        }
-        else
-        {
             currentPatrolPoint++;
             // Reset patrol point if it is greater than the size of the array
             if (currentPatrolPoint >= patrolPoints.Length)
             {
                 currentPatrolPoint = 0;
             }
-        }
     }
 
 
@@ -238,6 +233,4 @@ public class WarriorController : MonoBehaviour
             //Destroy(gameObject);
         }
     }
-
-
 }
