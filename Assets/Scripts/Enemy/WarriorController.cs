@@ -87,6 +87,7 @@ public class WarriorController : MonoBehaviour
 
             case AIState.isPatrolling:  // Warrior is patrolling
                 animator.SetBool("IsMoving", true);
+                animator.ResetTrigger("Attack");
                 yStore = theRB.velocity.y;
                 // Calculate the target point - the current position
                 moveDirection = patrolPoints[currentPatrolPoint].position - transform.position;
@@ -134,6 +135,7 @@ public class WarriorController : MonoBehaviour
                 // Check if player is out of chase range
                 if (Vector3.Distance(player.transform.position, transform.position) > chaseRange)
                 {
+                    animator.ResetTrigger("Attack");
                     currentState = AIState.isPausing;  // Pause before switching AI State
                     pauseCounter = pauseTime; //  Set time to pause
                     theRB.velocity = new Vector3();  // Stop the warrior from moving when paused
@@ -143,10 +145,10 @@ public class WarriorController : MonoBehaviour
 
 
             case AIState.isAttacking:   // Warrior is attacking the player
-                animator.SetBool("IsMoving", false);
+               // animator.SetBool("IsMoving", false);
                animator.SetTrigger("Attack");
                 Debug.Log("Warrior is Attacking " + player.name);
-                               //HealthController.instance.Damage();
+                //HealthController.instance.Damage();
 
                 break;
 

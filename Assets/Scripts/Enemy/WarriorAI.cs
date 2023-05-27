@@ -88,6 +88,7 @@ public class WarriorAI : MonoBehaviour
                 } else  // If the warrior hasn't reached its target enable auto-braking to facilitate
                 // a smooth stop at the destination
                 {
+                    animator.SetBool("IsMoving", true);
                     agent.autoBraking = true;
                 }
                 // Countdown the wait time
@@ -102,9 +103,9 @@ public class WarriorAI : MonoBehaviour
 
 
             case AIState.isPatrolling:  // Warrior is patrolling
-                animator.SetBool("IsMoving", true);
                 // Calculate the target point - the current position
                 moveDirection = patrolPoints[currentPatrolPoint].position - transform.position;
+                animator.SetBool("IsMoving", true);
                 // Move the warrior to the patrol point
                 agent.SetDestination(moveDirection);
 

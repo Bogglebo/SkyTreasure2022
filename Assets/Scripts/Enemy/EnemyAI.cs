@@ -41,7 +41,7 @@ public class EnemyAI : MonoBehaviour
         distanceToTarget = Vector3.Distance(target.position, agent.transform.position);
         
         if (!isProvoked ) { 
-            animator.SetBool("IsAttacking", false);
+            //animator.SetBool("IsAttacking", false);
             // Patrol
         
         }
@@ -54,7 +54,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         // Send the warrior patrolling again 
-        animator.SetBool("IsMoving", false);
+        //animator.SetBool("IsMoving", false);
     }
 
     // Method to decide whether the enemy should chase or attack the player
@@ -76,15 +76,15 @@ public class EnemyAI : MonoBehaviour
     private void ChaseTarget()
     {
        // animator.SetBool("IsAttacking", false);
-        animator.SetBool("IsMoving", true);
+        //animator.SetBool("IsMoving", true);
         agent.SetDestination(target.position);  // Move the enemy to the target's position
     }
 
     // Method to call if enemy gets within attack range of the player
     private void AttackTarget()
     {
-        animator.SetBool("IsMoving", false);
-        animator.SetBool("IsAttacking", true);
+        //animator.SetBool("IsMoving", false);
+       // animator.SetBool("IsAttacking", true);
     }
 
     private void OnDrawGizmosSelected()
