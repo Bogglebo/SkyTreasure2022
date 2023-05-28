@@ -5,43 +5,34 @@ using UnityEngine.Assertions.Must;
 
 public class WarriorAI : MonoBehaviour
 {
-    // How fast the warriors will move
-    public float moveSpeed, turnSpeed;
-    // Array of points the warriors will patrol around
-    public Transform[] patrolPoints;
-    // Patrol point the warrior is moving to
-    public int currentPatrolPoint;
-    // Direction we want the warrior to move towards
-    private Vector3 moveDirection;
+    public float moveSpeed, turnSpeed;   // How fast the warriors will move
+    public Transform[] patrolPoints;    // Array of points the warriors will patrol around
+    public int currentPatrolPoint;    // Patrol point the warrior is moving to
+    private Vector3 moveDirection;    // Position we want the warrior to target/move
+
     // Variable to stop enemy looking up and down
     private Vector3 lookTarget;
-    
+
     //// Store a value to smooth rigidbody y value 
     //public float yStore;
 
-    // Nav Mesh Agent
-    NavMeshAgent agent;
+    NavMeshAgent agent;  // Nav Mesh Agent
+    public Animator animator;  // Animator component
+    private PlayerController player;  // Player controller static instance
+    private WarriorHealthController warriorHealth;  // Enemy Damage static instance
 
     // Store the agent's original position
-    private Vector3 originalPosition;
-
-    public Animator animator;
-
+    //private Vector3 originalPosition;
     // Rigidbody to move the warriors around with basic physics
     //public Rigidbody theRB;
-
-    // Get player controller
-    private PlayerController player;
-
-    // Get enemy health controller
-    private WarriorHealthController warriorHealth;
 
     // Set up AI State system for warriors
     public enum AIState
     {
         isIdle, isPatrolling, isChasing, isAttacking, isPausing
     };
-    public AIState currentState;
+
+    public AIState currentState;  // Current AI state of the warrior
 
     public float waitTime;  // How long the warrior should wait at a patrol point
     public float waitChance;  //  % chance AI waits or not
@@ -64,67 +55,73 @@ public class WarriorAI : MonoBehaviour
         animator = GetComponent<Animator>();
         currentState = AIState.isPatrolling;  // Set the warrior default state when the game starts
         waitCounter = waitTime;  // Initialise the wait Time for countdown
-        chaseWaitCounter = waitToChase;
-        originalPosition = transform.position; // Warrior's original position
+        chaseWaitCounter = waitToChase;  // Initialise for countdown
+        pauseCounter = pauseTime;   // Initialise for countdown
+        //originalPosition = transform.position; // Warrior's original position
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         // Warrior action to take depending on AIState
         switch (currentState)
         {
 
-            case AIState.isIdle:    // Warrior is idle
-               animator.SetBool("IsMoving", false);
-               // Check to see if the warrior has reached its destination 
-               // if it has, set the destination to the current position and stop movement
-                if (agent.remainingDistance <= agent.stoppingDistance)
-                {
-                    animator.SetBool("IsMoving", false);
-                    agent.destination = transform.position;
-                    agent.autoBraking = false;      // Disable auto braking
-                } else  // If the warrior hasn't reached its target enable auto-braking to facilitate
-                // a smooth stop at the destination
-                {
-                    animator.SetBool("IsMoving", true);
-                    agent.autoBraking = true;
-                }
-                // Countdown the wait time
-                waitCounter -= Time.deltaTime;
-                // If wait time has counted down, move to next patrol point
-                if (waitCounter <= 0f)
-                {
-                    currentState = AIState.isPatrolling;
-                    NextPatrolPoint();
-                }
-                break;  // Break out of switch statement and execute following line of code
+            //case AIState.isIdle:    // Warrior is idle
+            //    animator.SetBool("IsMoving", false);
+            //    // Check to see if the warrior has reached its destination 
+            //    // if it has, set the destination to the current position and stop movement
+            //    if (agent.remainingDistance <= agent.stoppingDistance)
+            //    {
+            //        animator.SetBool("IsMoving", false);
+            //        agent.destination = transform.position;
+            //        agent.autoBraking = false;      // Disable auto braking
+            //    } else  // If the warrior hasn't reached its target enable auto-braking to facilitate
+            //    // a smooth stop at the destination
+            //    {
+            //        animator.SetBool("IsMoving", true);
+            //        agent.autoBraking = true;
+            //    }
+            //    // Countdown the wait time
+            //    waitCounter -= Time.deltaTime;
+            //    // If wait time has counted down, move to next patrol point
+            //    if (waitCounter <= 0f)
+            //    {
+            //        currentState = AIState.isPatrolling;
+            //        NextPatrolPoint();
+            //    }
+            //    break;  // Break out of switch statement and execute following line of code
 
 
             case AIState.isPatrolling:  // Warrior is patrolling
                 // Calculate the target point - the current position
-                moveDirection = patrolPoints[currentPatrolPoint].position - transform.position;
-                animator.SetBool("IsMoving", true);
+                moveDirection = patrolPoints[currentPatrolPoint].position;
+                animator.SetFloat("MoveSpeed", 0.4f);
+                Debug.Log("Warrior is moving to " + moveDirection);
                 // Move the warrior to the patrol point
                 agent.SetDestination(moveDirection);
 
-                // Check proximity to destination point (within 1 world unit)
-                if (Vector3.Distance(transform.position, patrolPoints[currentPatrolPoint].position) <= 1f)
-                {
-                    NextPatrolPoint();
-                }
-                else  // Warrior is not at the next target
-                {
-                    lookTarget = patrolPoints[currentPatrolPoint].position;
-                }
+                //// Check proximity to destination point (within 1 world unit)
+                //if (Vector3.Distance(transform.position, patrolPoints[currentPatrolPoint].position) <= 1f)
+                //{
+                //    NextPatrolPoint();
+                //}
+                //else  // Warrior is not at the next target
+                //{
+                //    lookTarget = patrolPoints[currentPatrolPoint].position;
+                //}
                 break;
+        }
+    }
+}
+/*
 
 
             case AIState.isChasing:  // Warrior is chasing the player
                 
                 // Invoke Run animation
-                animator.SetBool("IsMoving", true);
+               // animator.SetBool("IsMoving", true);
 
                 lookTarget = player.transform.position;
 
@@ -150,8 +147,8 @@ public class WarriorAI : MonoBehaviour
 
             case AIState.isAttacking:   // Warrior is attacking the player
                 // Stop the run animation and play the attack one
-                animator.SetBool("IsMoving", false);
-                animator.SetTrigger("Attack");
+                //animator.SetBool("IsMoving", false);
+                //animator.SetTrigger("Attack");
                 Debug.Log("Warrior is Attacking " + player.name);
                                //HealthController.instance.Damage();
 
@@ -235,3 +232,4 @@ public class WarriorAI : MonoBehaviour
         }
     }
 }
+*/
