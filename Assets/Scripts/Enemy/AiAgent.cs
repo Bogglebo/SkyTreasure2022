@@ -135,37 +135,25 @@ public class AiAgent : MonoBehaviour
         }
     }
 
-
     // Check for Player jumping on warrior head triggered by box collider  
     // attached to Player child's feet (Amy's)
-    // Alternatively if the collider is the Player Parent, the warrior hit the player  first
+    // Damage the Player via a box collider on the melee weapon
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //animator.SetBool("IsMoving", false);
-            //animator.SetTrigger("Attack");
-            // Player damages warrior
-            Debug.Log("OnTriggerEnter triggered with Player " + other.name);
-
+            // Deal melee damage to the enemy
             if (other.name == "Amy")  // The box collider on the player childs feet
             {
-                Debug.Log("This is where Amy hit the warrior on the head");
-                //enemyCount++;
-                //Debug.Log("Enemy Count is " + enemyCount);
                 EnemyDamaged();
             }
             else
-            {  // Warrior damages player
+            {  // Deal melee damage to the player from the box collider on the sword
                 if (other.name == "Player")
                 {
-                    Debug.Log("This is where the warrior damaged the player");
-                    Debug.Log("Player still taking damage");
                     HealthController.instance.Damage();
-                    // isAttacking = true;
                 }
             }
-            //Destroy(gameObject);
         }
     }
 }
