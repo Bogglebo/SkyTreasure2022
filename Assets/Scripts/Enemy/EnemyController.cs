@@ -71,7 +71,6 @@ public class EnemyController : MonoBehaviour
                     {
                         currentPatrolPoint = 0;
                     }
-                    // agent.SetDestination(patrolPoints[currentPatrolPoint].position);
                     currentState = AIState.isIdle;
                     waitCounter = waitAtPoint;
                 }
@@ -127,7 +126,4 @@ public class EnemyController : MonoBehaviour
                 break;
         }
     }
-
-
 }
-

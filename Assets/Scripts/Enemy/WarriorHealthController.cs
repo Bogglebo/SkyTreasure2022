@@ -3,7 +3,6 @@ using UnityEngine;
 // Script to control enemy health
 public class WarriorHealthController : MonoBehaviour
 {
-
     // Create a static instance of the EnemyHealthController 
     public static WarriorHealthController instance;
 
@@ -39,20 +38,10 @@ public class WarriorHealthController : MonoBehaviour
             new Vector3(0, 1.5f, 0f), transform.rotation);
         // When 5 enemies are killed open entry to the next level
         enemyCount++;
-        Debug.Log("Enemy count is " + enemyCount);
         if (enemyCount == 5)
         {
             portal.SetActive(true);
             levelTrigger.SetActive(true);
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        EnemyDamaged();
-
-    //    }
-    //}
 }

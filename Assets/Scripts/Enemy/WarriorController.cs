@@ -47,7 +47,6 @@ public class WarriorController : MonoBehaviour
     // Variables to set distance from player to trigger and end chase
     public float chaseDistance, pursuitSpeed, chaseRange;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -63,11 +62,9 @@ public class WarriorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // Warrior action to take depending on AIState
         switch (currentState)
         {
-
             case AIState.isIdle:    // Warrior is idle
                 animator.SetBool("IsMoving", false);
                 // Set the warrior to stationary no vertical movement
@@ -81,7 +78,6 @@ public class WarriorController : MonoBehaviour
                     NextPatrolPoint();
                 }
                 break;  // Break out of switch statement and execute following line of code
-
 
             case AIState.isPatrolling:  // Warrior is patrolling
                 animator.SetBool("IsMoving", true);
@@ -108,7 +104,6 @@ public class WarriorController : MonoBehaviour
                 }
 
                 break;
-
 
             case AIState.isChasing:  // Warrior is chasing the player
 
@@ -139,15 +134,7 @@ public class WarriorController : MonoBehaviour
                     pauseCounter = pauseTime; //  Set time to pause
                     theRB.velocity = new Vector3();  // Stop the warrior from moving when paused
                 }
-
-                //if (Vector3.Distance(player.transform.position, transform.position) <= agent.stoppingDistance)
-                //    theRB.velocity = new Vector3();
-                //animator.SetBool("IsMoving", false);
-                //animator.SetTrigger("Attack");
-                //    currentState = AIState.isAttacking;
-
                 break;
-
 
             case AIState.isAttacking:   // Warrior is attacking the player
                 theRB.velocity = Vector3.zero;
@@ -155,7 +142,6 @@ public class WarriorController : MonoBehaviour
                 animator.SetTrigger("Attack");
 
                 break;
-
 
             case AIState.isPausing:    // Pause before switching AI state
 
@@ -166,16 +152,12 @@ public class WarriorController : MonoBehaviour
                     currentState = AIState.isPatrolling;
                 }
                 break;
-
-
             default:
                 break;
         }
 
         if (Vector3.Distance(player.transform.position, transform.position) <= agent.stoppingDistance)
             currentState = AIState.isAttacking;
-
-
 
         // Check relative distance to player to calculate whether to chase
         if (currentState != AIState.isAttacking)
@@ -194,7 +176,6 @@ public class WarriorController : MonoBehaviour
         // Look at the target
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation
             (lookTarget - transform.position), turnSpeed * Time.deltaTime);
-
     }
 
     // Calculate the next patrol point
@@ -217,7 +198,6 @@ public class WarriorController : MonoBehaviour
             }
         }
     }
-
 
     // Check for Player jumping on warrior head triggered by box collider  
     // attached to Player child's feet (Amy's)
@@ -244,12 +224,8 @@ public class WarriorController : MonoBehaviour
                     Debug.Log("Player still taking damage");
                     HealthController.instance.Damage();
                     currentState = AIState.isAttacking;
-
                 }
             }
-            //Destroy(gameObject);
         }
     }
-
-
 }
