@@ -1,11 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 
 public class AiAgent : MonoBehaviour
 {
+    public static int enemyCount;
+
+    // Enemy death effect
+    public GameObject deathEffect;
+    // Activate Level End portal and trigger
+    public GameObject portal;
+    public GameObject levelTrigger;
+
     public Transform[] patrolPoints;    // Array of patrol points on the NavMesh 
     public float moveSpeed;     // Movement speed of enemy agent
     public float chaseRange;    // Distance before enemy will chase player
@@ -16,6 +22,7 @@ public class AiAgent : MonoBehaviour
     private NavMeshAgent agent; // NavMesh agent component
     private PlayerController playerController;  // Access static instance of player
     private HealthController healthController;  // Access static  instance of player health
+    private WarriorHealthController warriorHealth;
 
     public int currentPatrolPoint = 3;  // Patrol point the enemy is going to
     [SerializeField] private bool isPatrolling = true;  // Parameter to control patrol state
@@ -28,6 +35,7 @@ public class AiAgent : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         playerController = PlayerController.instance;
         healthController = HealthController.instance;
+        warriorHealth = WarriorHealthController.instance;
         animator = GetComponent<Animator>();
         animator.SetBool("isRunning", false);
         NextPatrolPoint();
@@ -36,7 +44,7 @@ public class AiAgent : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-      // Check to see whether the player is within range
+        // Check to see whether the player is within range
         distance = Vector3.Distance(transform.position, player.position);
 
         // Action to take for each state
@@ -56,17 +64,16 @@ public class AiAgent : MonoBehaviour
             {
                 isAttacking = true;
             }
-        } else if (isAttacking )    // The player is within attack range
+        }
+        else if (isAttacking)    // The player is within attack range
         {
             isChasing = false;
             isAttacking = true;
         }
 
-        //// Check to see whether the player is within range
-        //distance = Vector3.Distance(transform.position, player.position);
-
-        // If the player is within chase range, set up the chase
-        if (distance <= chaseRange) 
+        // If the player is within chase range, set up the chase or attack
+        // depending on distance
+        if (distance <= chaseRange)
         {
             agent.isStopped = false;
             isChasing = true;
@@ -78,14 +85,15 @@ public class AiAgent : MonoBehaviour
             if (distance <= agent.stoppingDistance)
             {
                 agent.isStopped = true;
-                animator.SetBool("isRunning", false) ;
-                animator.SetBool("isAttacking", true) ;
+                animator.SetBool("isRunning", false);
+                animator.SetBool("isAttacking", true);
                 isChasing = false;
                 isPatrolling = false;
                 isAttacking = true;
             }
-        } else
-        // The enemy is patrolling
+        }
+        else
+        // If the enemy isn't chasing or attacking it is patrolling
         {
             agent.isStopped = false;
             animator.SetBool("isRunning", true);
@@ -96,6 +104,7 @@ public class AiAgent : MonoBehaviour
         }
     }
 
+    // Move to the next patrol point
     private void NextPatrolPoint()
     {
         if (patrolPoints.Length == 0)
@@ -103,66 +112,60 @@ public class AiAgent : MonoBehaviour
         agent.isStopped = false;
         animator.SetBool("isRunning", true);
         agent.SetDestination(patrolPoints[currentPatrolPoint].position);
+        // Increase the current patrol point, use the modulo operation  to ensure
+        // the next patrol point becomes 0 if max patrol points array length is reached
         currentPatrolPoint = (currentPatrolPoint + 1) % patrolPoints.Length;
     }
 
-    //private void Attack()
-    //{
-    //    if (distance > agent.stoppingDistance && distance <= chaseRange)
-    //    {
-    //        isPatrolling = false;
-    //        agent.isStopped = false;
-    //        isChasing = true;
-    //        isAttacking = false;
-    //        animator.SetBool("isAttacking", false);
-    //        animator.SetBool("isRunning", true );
-    //     } else if (distance > agent.stoppingDistance && distance >= chaseRange)
-    //    {
-    //        isPatrolling = true;
-    //        agent.isStopped = false;
-    //        isChasing = false;
-    //        isAttacking = false;
-    //        animator.SetBool("isAttacking", false);
-    //        animator.SetBool("isRunning", true);
-    //     } else
-    //    {
-    //        Debug.Log("Within attack range so attack the player");
-    //        isPatrolling = false;
-    //        agent.isStopped = true;
-    //        isChasing = false;
-    //        isAttacking = true;
-    //        animator.SetBool("isAttacking", true);
-    //        animator.SetBool("isRunning", false);
-    //    }
-    //}
+    public void EnemyDamaged()
+    {
+        AudioController.instance.PlayFX(5);
+        ScoreController.instance.UpdateScore(150);
+        Destroy(gameObject);
+        PlayerController.instance.Bounce();
+        Instantiate(deathEffect, transform.position +
+            new Vector3(0, 1.5f, 0f), transform.rotation);
+        // When 5 enemies are killed open entry to the next level
+        enemyCount++;
+        Debug.Log("Enemy count is " + enemyCount);
+        if (enemyCount == 5)
+        {
+            portal.SetActive(true);
+            levelTrigger.SetActive(true);
+        }
+    }
 
 
+    // Check for Player jumping on warrior head triggered by box collider  
+    // attached to Player child's feet (Amy's)
+    // Alternatively if the collider is the Player Parent, the warrior hit the player  first
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            isPatrolling = false;
-            isChasing = true;
-            agent.isStopped = true;
-            Debug.Log("In onTriggerEnter");
+            //animator.SetBool("IsMoving", false);
+            //animator.SetTrigger("Attack");
+            // Player damages warrior
+            Debug.Log("OnTriggerEnter triggered with Player " + other.name);
 
-            //animator.SetBool("isPatrolling", false);
-            //animator.SetBool("isRunning", true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isPatrolling = true;
-            isChasing = false;
-            isAttacking = false;
-            agent.isStopped = false;
-
-            //animator.SetBool("isPatrolling", true);
-            animator.SetBool("isRunning", false);
-            animator.SetBool("isAttacking", false);
+            if (other.name == "Amy")  // The box collider on the player childs feet
+            {
+                Debug.Log("This is where Amy hit the warrior on the head");
+                //enemyCount++;
+                //Debug.Log("Enemy Count is " + enemyCount);
+                EnemyDamaged();
+            }
+            else
+            {  // Warrior damages player
+                if (other.name == "Player")
+                {
+                    Debug.Log("This is where the warrior damaged the player");
+                    Debug.Log("Player still taking damage");
+                    HealthController.instance.Damage();
+                    // isAttacking = true;
+                }
+            }
+            //Destroy(gameObject);
         }
     }
 }

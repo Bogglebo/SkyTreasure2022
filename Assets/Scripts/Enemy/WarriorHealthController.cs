@@ -31,20 +31,20 @@ public class WarriorHealthController : MonoBehaviour
 
     public void EnemyDamaged()
     {
-            AudioController.instance.PlayFX(5);
-            ScoreController.instance.UpdateScore(150);
-            Destroy(gameObject);
-            PlayerController.instance.Bounce();
-            Instantiate(deathEffect, transform.position +
-                new Vector3(0, 1.5f, 0f), transform.rotation);
-            // When 5 enemies are killed open entry to the next level
-            enemyCount++;
-            Debug.Log("Enemy count is " + enemyCount);
-            if (enemyCount == 5)
-            {
-                portal.SetActive(true);
-                levelTrigger.SetActive(true);
-            }
+        AudioController.instance.PlayFX(5);
+        ScoreController.instance.UpdateScore(150);
+        Destroy(gameObject);
+        PlayerController.instance.Bounce();
+        Instantiate(deathEffect, transform.position +
+            new Vector3(0, 1.5f, 0f), transform.rotation);
+        // When 5 enemies are killed open entry to the next level
+        enemyCount++;
+        Debug.Log("Enemy count is " + enemyCount);
+        if (enemyCount == 5)
+        {
+            portal.SetActive(true);
+            levelTrigger.SetActive(true);
+        }
     }
 
     //private void OnTriggerEnter(Collider other)

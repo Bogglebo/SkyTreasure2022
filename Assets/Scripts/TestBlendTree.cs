@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TestBlendTree : MonoBehaviour
@@ -22,12 +20,13 @@ public class TestBlendTree : MonoBehaviour
         {
             animator.SetBool("IsAttacking", true);
             i++;
-        } else
+        }
+        else
         {
             animator.SetBool("IsAttacking", false);
             animator.SetFloat("MoveSpeed", 0f);
         }
-       
-       
+
+
     }
 }

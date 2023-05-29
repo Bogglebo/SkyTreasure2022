@@ -1,7 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Assertions.Must;
 
 public class WarriorController : MonoBehaviour
 {
@@ -55,7 +53,7 @@ public class WarriorController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player = PlayerController.instance;  // Access the player controller static instance
-        warriorHealth = WarriorHealthController.instance;  // Access the enemy health static instance
+        warriorHealth = GetComponent<WarriorHealthController>();  // Access the enemy health static instance
         animator = GetComponent<Animator>();
         currentState = AIState.isIdle;  // Set the warrior default state when the game starts
         waitCounter = waitTime;  // Initialise the wait Time for countdown
@@ -99,7 +97,7 @@ public class WarriorController : MonoBehaviour
                 theRB.velocity = new Vector3(theRB.velocity.x, yStore, theRB.velocity.z);
 
                 // Check proximity to destination point (within 1 world unit)
-                if (Vector3.Distance(transform.position, patrolPoints[currentPatrolPoint].position) 
+                if (Vector3.Distance(transform.position, patrolPoints[currentPatrolPoint].position)
                     <= agent.stoppingDistance)
                 {
                     NextPatrolPoint();
@@ -153,8 +151,8 @@ public class WarriorController : MonoBehaviour
 
             case AIState.isAttacking:   // Warrior is attacking the player
                 theRB.velocity = Vector3.zero;
-               animator.SetBool("IsMoving", false);
-               animator.SetTrigger("Attack");
+                animator.SetBool("IsMoving", false);
+                animator.SetTrigger("Attack");
 
                 break;
 
@@ -175,7 +173,7 @@ public class WarriorController : MonoBehaviour
         }
 
         if (Vector3.Distance(player.transform.position, transform.position) <= agent.stoppingDistance)
-        currentState = AIState.isAttacking;
+            currentState = AIState.isAttacking;
 
 
 
@@ -185,7 +183,7 @@ public class WarriorController : MonoBehaviour
             if (Vector3.Distance(player.transform.position, transform.position) <= chaseDistance)
             {
                 currentState = AIState.isChasing;
-  //              theRB.velocity = Vector3.up * hopForce;
+                //              theRB.velocity = Vector3.up * hopForce;
                 chaseWaitCounter = waitToChase;
             }
         }
@@ -237,7 +235,8 @@ public class WarriorController : MonoBehaviour
             {
                 Debug.Log("This is where Amy hit the warrior on the head");
                 warriorHealth.EnemyDamaged();
-            } else
+            }
+            else
             {  // Warrior damages player
                 if (other.name == "Player")
                 {
@@ -245,7 +244,7 @@ public class WarriorController : MonoBehaviour
                     Debug.Log("Player still taking damage");
                     HealthController.instance.Damage();
                     currentState = AIState.isAttacking;
-                   
+
                 }
             }
             //Destroy(gameObject);

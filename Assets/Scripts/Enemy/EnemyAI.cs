@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -39,11 +37,12 @@ public class EnemyAI : MonoBehaviour
     {
         // Calculate the distance between the target and the enemy each frame
         distanceToTarget = Vector3.Distance(target.position, agent.transform.position);
-        
-        if (!isProvoked ) { 
+
+        if (!isProvoked)
+        {
             //animator.SetBool("IsAttacking", false);
             // Patrol
-        
+
         }
 
         // If the player is within the chase range set, pursue the player
@@ -66,8 +65,8 @@ public class EnemyAI : MonoBehaviour
         }
 
         if (distanceToTarget <= agent.stoppingDistance)
-        { 
-                AttackTarget();
+        {
+            AttackTarget();
         }
         isProvoked = false;
     }
@@ -75,7 +74,7 @@ public class EnemyAI : MonoBehaviour
     // Method to call when enemy is chasing the player
     private void ChaseTarget()
     {
-       // animator.SetBool("IsAttacking", false);
+        // animator.SetBool("IsAttacking", false);
         //animator.SetBool("IsMoving", true);
         agent.SetDestination(target.position);  // Move the enemy to the target's position
     }
@@ -84,7 +83,7 @@ public class EnemyAI : MonoBehaviour
     private void AttackTarget()
     {
         //animator.SetBool("IsMoving", false);
-       // animator.SetBool("IsAttacking", true);
+        // animator.SetBool("IsAttacking", true);
     }
 
     private void OnDrawGizmosSelected()

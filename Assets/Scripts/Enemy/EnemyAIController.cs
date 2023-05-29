@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.PlayerLoop;
 
 public class EnemyAIController : MonoBehaviour
 {
@@ -24,7 +21,7 @@ public class EnemyAIController : MonoBehaviour
 
     float waitCounter;                                //  Wait time counter
     float waitToChase;                               //  Wait time before chasing the player
-    [SerializeField]bool playerInRange;                            //  Flag when the player is in chase range
+    //[SerializeField]bool playerInRange;                            //  Flag when the player is in chase range
     [SerializeField] bool playerNearby;                              //  Flag when the player and enemy are nearby
     [SerializeField] bool isPatrolling;                                  //  Flag when the enemy is patrolling
     [SerializeField] bool isCaught;                                      //  Flag when the player is caught
@@ -37,16 +34,16 @@ public class EnemyAIController : MonoBehaviour
         playerPosition = Vector3.zero;      // Set the player transform to 0
         isPatrolling = true;                            // Flag the enemy as patrolling
         // Set the inital bool states to false
-        isCaught = false;                             
-        playerInRange = false;
+        isCaught = false;
+        //playerInRange = false;
         playerNearby = false;
         waitCounter = startWaitTime;             // Set the initial wait time
         waitToChase = chaseWaitTime;
         agent = GetComponent<NavMeshAgent>();
         agent.isStopped = false;
         agent.speed = walkSpeed;    //  Align the navmesh agent speed with the enemy speed
-       // Set the first patrol point as the destination
-        agent.SetDestination(patrolPoints[currentPatrolPoint].position); 
+                                    // Set the first patrol point as the destination
+        agent.SetDestination(patrolPoints[currentPatrolPoint].position);
     }
 
     // Update is called once per frame
@@ -81,7 +78,7 @@ public class EnemyAIController : MonoBehaviour
         }
         if (agent.remainingDistance <= agent.stoppingDistance)    //  Control if the enemy arrive to the player location
             animator.SetBool("IsMoving", false);
-            animator.SetTrigger("Attack");
+        animator.SetTrigger("Attack");
         {
             if (waitCounter <= 0 && !isCaught && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
             {
@@ -99,7 +96,7 @@ public class EnemyAIController : MonoBehaviour
                 if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 2.5f)
                     //  Wait if the current position is not the player position
                     animator.SetBool("IsMoving", false);
-                    Stop();
+                Stop();
                 waitCounter -= Time.deltaTime;
             }
         }
@@ -132,7 +129,7 @@ public class EnemyAIController : MonoBehaviour
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
                 //  If the enemy arrives to the waypoint position then wait for a moment and go to the next
-                animator.SetBool("IsMoving", false );
+                animator.SetBool("IsMoving", false);
                 if (waitCounter <= 0)
                 {
                     animator.SetBool("IsMoving", true);
@@ -237,6 +234,6 @@ public class EnemyAIController : MonoBehaviour
     //             * */
     //            playerPosition = player.transform.position;       //  Save the player's current position if the player is in range of vision
     //        }
-//}
+    //}
     //}
 }
