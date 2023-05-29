@@ -93,13 +93,14 @@ public class WarriorController : MonoBehaviour
                 moveDirection = patrolPoints[currentPatrolPoint].position - transform.position;
                 moveDirection.y = 0f; // No movement up and down
                 moveDirection.Normalize(); // Normalize the move direction
-                                           // Move the rigidbody on the warrior in the calculated direction
-                                           // at the speed specified.  Unity will handle (fps) Time.deltaTime with the Rigidbody
+                // Move the rigidbody on the warrior in the calculated direction
+                // at the speed specified.  Unity will handle (fps) Time.deltaTime with the Rigidbody
                 theRB.velocity = moveDirection * moveSpeed;
                 theRB.velocity = new Vector3(theRB.velocity.x, yStore, theRB.velocity.z);
 
                 // Check proximity to destination point (within 1 world unit)
-                if (Vector3.Distance(transform.position, patrolPoints[currentPatrolPoint].position) <= 1f)
+                if (Vector3.Distance(transform.position, patrolPoints[currentPatrolPoint].position) 
+                    <= agent.stoppingDistance)
                 {
                     NextPatrolPoint();
                 }
@@ -141,14 +142,19 @@ public class WarriorController : MonoBehaviour
                     theRB.velocity = new Vector3();  // Stop the warrior from moving when paused
                 }
 
+                //if (Vector3.Distance(player.transform.position, transform.position) <= agent.stoppingDistance)
+                //    theRB.velocity = new Vector3();
+                //animator.SetBool("IsMoving", false);
+                //animator.SetTrigger("Attack");
+                //    currentState = AIState.isAttacking;
+
                 break;
 
 
             case AIState.isAttacking:   // Warrior is attacking the player
-               // animator.SetBool("IsMoving", false);
+                theRB.velocity = Vector3.zero;
+               animator.SetBool("IsMoving", false);
                animator.SetTrigger("Attack");
-                Debug.Log("Warrior is Attacking " + player.name);
-                //HealthController.instance.Damage();
 
                 break;
 
@@ -168,13 +174,18 @@ public class WarriorController : MonoBehaviour
                 break;
         }
 
+        if (Vector3.Distance(player.transform.position, transform.position) <= agent.stoppingDistance)
+        currentState = AIState.isAttacking;
+
+
+
         // Check relative distance to player to calculate whether to chase
-        if (currentState != AIState.isChasing)
+        if (currentState != AIState.isAttacking)
         {
             if (Vector3.Distance(player.transform.position, transform.position) <= chaseDistance)
             {
                 currentState = AIState.isChasing;
-                theRB.velocity = Vector3.up * hopForce;
+  //              theRB.velocity = Vector3.up * hopForce;
                 chaseWaitCounter = waitToChase;
             }
         }

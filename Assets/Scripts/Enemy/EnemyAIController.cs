@@ -13,15 +13,6 @@ public class EnemyAIController : MonoBehaviour
     public float chaseWaitTime = 2f;             //  Wait time to chase player
     public float walkSpeed = 4f;                     //  Walk speed,
     public float runSpeed = 6f;                       //  Run speed
-    public float viewRadius = 15;                   //  Radius of the enemy view
-    public float viewAngle = 90;                     //  Angle of the enemy view
-    public LayerMask playerMask;                //  Detect player when raycasting
-    public LayerMask obstacleMask;           //  Detect obstacles when raycasting
-    public float meshResolution = 1.0f;        //  How many rays per degree
-    public int edgeIterations = 4;                  //  Number of iterations to get a better performance of
-                                                                          //  the mesh filter when the raycast hits an obstacle
-    public float edgeDistance = 0.5f;            //  Max distance to calculate the minumun and maximum
-                                                                          //  raycast when an object is hit
 
 
     public Transform[] patrolPoints;             //  Array of patrol points the enemy AI will walk around on the navmesh
@@ -62,7 +53,7 @@ public class EnemyAIController : MonoBehaviour
     private void Update()
     {
         // Ascertain the position of the enemy
-        EnviromentView();                       //  Check whether or not the player is in the enemy's field of vision
+        //EnviromentView();                       //  Check whether or not the player is in the enemy's field of vision
         // If the enemy is not patrolling
         if (!isPatrolling)
         {
@@ -207,45 +198,45 @@ public class EnemyAIController : MonoBehaviour
         }
     }
 
-    void EnviromentView()
-    {
-        Collider[] playerInRange = Physics.OverlapSphere(transform.position, viewRadius, playerMask);   //  Make an overlap sphere around the enemy to detect the playermask in the view radius
+    //void EnviromentView()
+    //{
+    //    Collider[] playerInRange = Physics.OverlapSphere(transform.position, viewRadius, playerMask);   //  Make an overlap sphere around the enemy to detect the playermask in the view radius
 
-        for (int i = 0; i < playerInRange.Length; i++)
-        {
-            Transform player = playerInRange[i].transform;
-            Vector3 dirToPlayer = (player.position - transform.position).normalized;
-            if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle / 2)
-            {
-                float dstToPlayer = Vector3.Distance(transform.position, player.position);          //  Distance of the enmy and the player
-                if (!Physics.Raycast(transform.position, dirToPlayer, dstToPlayer, obstacleMask))
-                {
-                    this.playerInRange = true;             //  The player has been seeing by the enemy and then the nemy starts to chasing the player
-                    isPatrolling = false;                 //  Change the state to chasing the player
-                }
-                else
-                {
-                    /*
-                     *  If the player is behind a obstacle the player position will not be registered
-                     * */
-                    this.playerInRange = false;
-                }
-            }
-            if (Vector3.Distance(transform.position, player.position) > viewRadius)
-            {
-                /*
-                 *  If the player is further than the view radius, then the enemy will no longer keep the player's current position.
-                 *  Or the enemy is a safe zone, the enemy will no chase
-                 * */
-                this.playerInRange = false;                //  Change the sate of chasing
-            }
-            if (this.playerInRange)
-            {
-                /*
-                 *  If the enemy no longer sees the player, then the enemy will go to the last position that has been registered
-                 * */
-                playerPosition = player.transform.position;       //  Save the player's current position if the player is in range of vision
-            }
-        }
-    }
+    //    for (int i = 0; i < playerInRange.Length; i++)
+    //    {
+    //        Transform player = playerInRange[i].transform;
+    //        Vector3 dirToPlayer = (player.position - transform.position).normalized;
+    //        if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle / 2)
+    //        {
+    //            float dstToPlayer = Vector3.Distance(transform.position, player.position);          //  Distance of the enmy and the player
+    //            if (!Physics.Raycast(transform.position, dirToPlayer, dstToPlayer, obstacleMask))
+    //            {
+    //                this.playerInRange = true;             //  The player has been seeing by the enemy and then the nemy starts to chasing the player
+    //                isPatrolling = false;                 //  Change the state to chasing the player
+    //            }
+    //            else
+    //            {
+    //                /*
+    //                 *  If the player is behind a obstacle the player position will not be registered
+    //                 * */
+    //                this.playerInRange = false;
+    //            }
+    //        }
+    //        if (Vector3.Distance(transform.position, player.position) > viewRadius)
+    //        {
+    //            /*
+    //             *  If the player is further than the view radius, then the enemy will no longer keep the player's current position.
+    //             *  Or the enemy is a safe zone, the enemy will no chase
+    //             * */
+    //            this.playerInRange = false;                //  Change the sate of chasing
+    //        }
+    //        if (this.playerInRange)
+    //        {
+    //            /*
+    //             *  If the enemy no longer sees the player, then the enemy will go to the last position that has been registered
+    //             * */
+    //            playerPosition = player.transform.position;       //  Save the player's current position if the player is in range of vision
+    //        }
+//}
+    //}
 }
