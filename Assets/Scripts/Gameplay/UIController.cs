@@ -6,6 +6,7 @@ public class UIController : MonoBehaviour
 {
     // Static variable accesible from anywhere in the game
     public static int theScore;
+    public static int treasureCount;
 
     // Create a static instance of the UI Controller 
     public static UIController instance;
@@ -13,6 +14,7 @@ public class UIController : MonoBehaviour
     // UI variables containing health and score
     public Text healthText;
     public Text scoreText;
+    public Text treasureCountText;
 
     // UI variable for pause menu
     public GameObject pauseMenu;

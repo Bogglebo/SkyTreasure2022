@@ -7,8 +7,10 @@ public class ScoreController : MonoBehaviour
     // Create a static instance of the ScoreController
     public static ScoreController instance;
 
-    // Static variable to hold the score accessible throughout the game
+    // Variable to hold the score accessible throughout the game
     public int theScore = 0;
+    // Variable to hold the tresure count accessible throughout the game
+    public int treasureCount = 0;
 
     public void Awake()
     {
@@ -22,12 +24,14 @@ public class ScoreController : MonoBehaviour
         if (currentSceneName != "Level01")
         {
             theScore = PlayerPrefs.GetInt("Player Score");
+            treasureCount = PlayerPrefs.GetInt("Treasure Count");
             UIController.instance.scoreText.text = "Score " + theScore;
-            Debug.Log("We are not in Level 1 and the score is " + theScore);
+            UIController.instance.treasureCountText.text = "Treasure Count" + treasureCount;
+            Debug.Log("We are not in Level 1 and the score is " + theScore + " and treasure count " + treasureCount);
         }
         else
         {
-            Debug.Log("We are in Level 1 and the score should be " + theScore);
+            Debug.Log("We are in Level 1 and the score should be " + theScore + " and treasure count " + treasureCount);
             UpdateScore(theScore);
         }
     }
@@ -37,5 +41,12 @@ public class ScoreController : MonoBehaviour
     {
         theScore += changeScore;
         UIController.instance.scoreText.text = "Score: " + theScore;
+    }
+
+    // Method to update the treasure count
+    public void UpdateTreasureCount()
+    {
+        treasureCount++;
+        UIController.instance.treasureCountText.text = "Treasure: " + treasureCount;
     }
 }

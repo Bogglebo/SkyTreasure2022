@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BossActivator : MonoBehaviour
 {
-
+    // Action to take when the player enters the boss area
     public GameObject actionBoss;
 
     private void OnTriggerEnter(Collider other)
@@ -10,6 +10,7 @@ public class BossActivator : MonoBehaviour
         // When player enters the area activate the boss
         if (other.CompareTag("Player"))
         {
+            // Make the boss appear
             AudioController.instance.PlayFX(7);
             actionBoss.SetActive(true);
 
@@ -17,5 +18,4 @@ public class BossActivator : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
 }

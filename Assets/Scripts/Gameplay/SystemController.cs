@@ -133,6 +133,7 @@ public class SystemController : MonoBehaviour
     {
         AudioController.instance.PlayFX(2);
         PlayerPrefs.SetInt("Player Score", ScoreController.instance.theScore);
+        PlayerPrefs.SetInt("Treasure Count", ScoreController.instance.treasureCount);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         yield return new WaitForSeconds(1f);

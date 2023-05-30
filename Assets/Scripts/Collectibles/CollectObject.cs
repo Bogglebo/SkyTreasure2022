@@ -15,12 +15,14 @@ public class CollectObject : MonoBehaviour
                 case "Coin":
                     AudioController.instance.PlayFX(0);
                     ScoreController.instance.UpdateScore(50);
+                    ScoreController.instance.UpdateTreasureCount();
                     this.gameObject.SetActive(false);
                     break;
 
                 case "Gem":
                     AudioController.instance.PlayFX(1);
                     ScoreController.instance.UpdateScore(100);
+                    ScoreController.instance.UpdateTreasureCount();
                     this.gameObject.SetActive(false);
                     break;
                 default:
@@ -29,8 +31,4 @@ public class CollectObject : MonoBehaviour
             }
         }
     }
-
-
-
-
 }

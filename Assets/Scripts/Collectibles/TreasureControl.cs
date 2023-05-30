@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class TreasureControl : MonoBehaviour
+    // Script to control combination of Treasure Chest animations & score
 {
     // Variables to turn visibility on/off for various parts of chest
     public GameObject chestClosed, chestOpen, chestCoins;
@@ -29,6 +30,7 @@ public class TreasureControl : MonoBehaviour
         chestCoins.SetActive(true);
         yield return new WaitForSeconds(1);
         ScoreController.instance.UpdateScore(objectAmount);
+        ScoreController.instance.UpdateTreasureCount();
         AudioController.instance.PlayFX(2);
         chestCoins.SetActive(false);
         chestOpen.SetActive(false);
