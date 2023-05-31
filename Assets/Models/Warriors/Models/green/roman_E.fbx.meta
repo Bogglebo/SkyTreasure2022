@@ -11,32 +11,32 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: roman_E_texture
-    second: {fileID: 2100000, guid: 6a593fd02b25c6e4eb31513b96d422a0, type: 2}
+    second: {fileID: 2100000, guid: 7aa2593374cac0448afcfccfb4d7b7b5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: roman_clothes_texture
-    second: {fileID: 2100000, guid: 16b38040e0f9a9e4f94525d876f2cd29, type: 2}
+    second: {fileID: 2100000, guid: f4996c84b8b5a95438ad9b245e7045cf, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: roman_weapons_texture
-    second: {fileID: 2100000, guid: 4fc7b396b2109944cb48f393ba4c52f6, type: 2}
+    second: {fileID: 2100000, guid: 573451c310a05bb42ae7a6b565c36ee7, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: roman_green_E_texture
-    second: {fileID: 2800000, guid: 596463ec76a93114f852c571f43e4326, type: 3}
+    second: {fileID: 2800000, guid: dd2c51b373156f04d936afee277b9d0e, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: roman_green_clothes_texture
-    second: {fileID: 2800000, guid: cb28758ee8d282841a63b248bb91fe63, type: 3}
+    second: {fileID: 2800000, guid: a7fdb6538e63a7e49a16ee01fae70591, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: roman_weapons_texture
-    second: {fileID: 2800000, guid: e1b4f0c27c5f2024dab7172d81cb4133, type: 3}
+    second: {fileID: 2800000, guid: 6306853bd003b69458062a1bd3a33025, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -83,7 +83,7 @@ public class BossBattleController : MonoBehaviour
             }
             currentHealth = 0;
             // Update the score when the boss dies and activate the level end
-            ScoreController.instance.UpdateScore(500);
+            ScoreController.instance.UpdateScore(1000);
             activateExitPortal.SetActive(true);
             SystemController.instance.bossKilled = true;
         }
