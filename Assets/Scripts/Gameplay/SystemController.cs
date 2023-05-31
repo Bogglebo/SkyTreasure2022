@@ -7,7 +7,7 @@ public class SystemController : MonoBehaviour
     // Create a static instance of the System Controller 
     public static SystemController instance;
 
-    private Vector3 respawnPosition;    // Variable to hold respawn position
+    private Vector3 respawnPosition;    // Variable to hold player respawn position
     private Vector3 cameraSpawnPosition;  // Variable to hold camera respawn position
 
     // Game object for the death particle effect
@@ -36,7 +36,7 @@ public class SystemController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        // Set an alternative respawn position for Level01Boss Fight
+        // Set an alternative player respawn position for Level01Boss Fight
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName == "Level01Boss")
         {
@@ -44,7 +44,7 @@ public class SystemController : MonoBehaviour
         }
         else
         {
-            // Set the respawn position when the player dies on levels
+            // Set the respawn position when the player dies on other levels
             respawnPosition = instance.transform.position;
         }
 
@@ -81,10 +81,12 @@ public class SystemController : MonoBehaviour
             new Vector3(0f, 1f, 0f), PlayerController.instance.transform.rotation);
         // Deactivate the player and wait for 2 seconds before respawning
         yield return new WaitForSeconds(2f);
+
         //  If the boss hasn't already been killed, reset boss to full health when player dies
         if ((reloadBossHealth) && (!bossKilled))
         {
             PlayerPrefs.SetInt("Player Score", ScoreController.instance.theScore);
+            PlayerPrefs.SetInt("Treasure Count", ScoreController.instance.theScore);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else
@@ -97,7 +99,6 @@ public class SystemController : MonoBehaviour
             CameraController.instance.transform.position = cameraSpawnPosition;
             PlayerController.instance.gameObject.SetActive(true);
         }
-
     }
 
     // Set the respawn point of the player to be used with checkpoints

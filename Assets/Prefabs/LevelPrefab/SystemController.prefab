@@ -558,7 +558,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1242,6 +1242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theScore: 0
+  treasureCount: 0
 --- !u!114 &1373832433
 MonoBehaviour:
   m_ObjectHideFlags: 0

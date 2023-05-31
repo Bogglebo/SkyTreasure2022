@@ -24,9 +24,7 @@ public class HealthController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-
-    }
+    {  }
 
     // Remove health when damaged
     public void Damage()

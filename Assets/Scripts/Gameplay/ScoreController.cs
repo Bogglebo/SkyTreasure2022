@@ -23,16 +23,18 @@ public class ScoreController : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         if (currentSceneName != "Level01")
         {
+            // Start settings for all Levels other than Level 1
             theScore = PlayerPrefs.GetInt("Player Score");
             treasureCount = PlayerPrefs.GetInt("Treasure Count");
-            UIController.instance.scoreText.text = "Score " + theScore;
-            UIController.instance.treasureCountText.text = "Treasure Count" + treasureCount;
+            UIController.instance.scoreText.text = "Score: " + theScore;
+            UIController.instance.treasureCountText.text = "Treasure: " + treasureCount;
             Debug.Log("We are not in Level 1 and the score is " + theScore + " and treasure count " + treasureCount);
         }
-        else
+        else  // Start settings for Level 1
         {
             Debug.Log("We are in Level 1 and the score should be " + theScore + " and treasure count " + treasureCount);
             UpdateScore(theScore);
+            UIController.instance.treasureCountText.text = "Treasure: " + treasureCount;
         }
     }
 
