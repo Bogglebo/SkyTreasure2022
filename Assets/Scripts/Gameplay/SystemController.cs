@@ -86,7 +86,7 @@ public class SystemController : MonoBehaviour
         if ((reloadBossHealth) && (!bossKilled))
         {
             PlayerPrefs.SetInt("Player Score", ScoreController.instance.theScore);
-            PlayerPrefs.SetInt("Treasure Count", ScoreController.instance.theScore);
+            PlayerPrefs.SetInt("Treasure Count", ScoreController.instance.treasureCount);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else
