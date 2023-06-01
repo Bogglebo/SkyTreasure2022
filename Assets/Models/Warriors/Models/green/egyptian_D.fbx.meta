@@ -6,7 +6,39 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  - first:
+      74: -3100369314251171874
+    second: Idle
+  - first:
+      74: 5522812681064789136
+    second: Run
+  - first:
+      74: -4630339522487117836
+    second: Die
+  - first:
+      74: 6720303635017113406
+    second: Attack
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: egyptian_D_texture
+    second: {fileID: 2100000, guid: cdd9766e4cc589f45b509e8bd260ec32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: egyptian_weapons_texture
+    second: {fileID: 2100000, guid: 0c899508159b7124f95576aa32252725, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: egyptian_green_D_texture
+    second: {fileID: 2800000, guid: e52ebb84ab3ebde46993ab326ecc6bb6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: egyptian_weapons_texture
+    second: {fileID: 2800000, guid: f9386d5bb12241b4698b4a877a7d0bc6, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -27,14 +59,159 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 540
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 338
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 339
+      lastFrame: 362
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Die
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 363
+      lastFrame: 441
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 442
+      lastFrame: 514
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -82,8 +259,344 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
-    human: []
-    skeleton: []
+    human:
+    - boneName: Hips_eD_blue
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftUpLeg_eD_blue
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightUpLeg_eD_blue
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftLeg_eD_blue
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightLeg_eD_blue
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftFoot_eD_blue
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightFoot_eD_blue
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Spine_eD_blue
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Spine1_eD_blue
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Neck_eD_blue
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Head_eD_blue
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftShoulder_eD_blue
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightShoulder_eD_blue
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftArm_eD_blue
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightArm_eD_blue
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftForeArm_eD_blue
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightForeArm_eD_blue
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftHand_eD_blue
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightHand_eD_blue
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftToeBase_eD_blue
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightToeBase_eD_blue
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Spine2_eD_blue
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: egyptian_D(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: egyptian_D
+      parentName: egyptian_D(Clone)
+      position: {x: 0.0000025982513, y: 2.0725734, z: -14.328075}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: egyptian_D_position
+      parentName: egyptian_D(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hips_eD_blue
+      parentName: egyptian_D_position
+      position: {x: -0.0022384245, y: 0.37945548, z: -0.0023911812}
+      rotation: {x: -0, y: -0, z: -3.6379788e-10, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine_eD_blue
+      parentName: Hips_eD_blue
+      position: {x: -4.1741783e-19, y: 0.03962414, z: -0.0027429627}
+      rotation: {x: -0.028430916, y: 0.000000005849441, z: -9.2546254e-10, w: 0.99959576}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine1_eD_blue
+      parentName: Spine_eD_blue
+      position: {x: -1.0842021e-21, y: 0.10096492, z: 0.001890334}
+      rotation: {x: -0, y: -0.0000000056459317, z: -0.0000000032365248, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 0.9999999}
+    - name: Spine2_eD_blue
+      parentName: Spine1_eD_blue
+      position: {x: 2.1684043e-21, y: 0.0815286, z: 0.0007585631}
+      rotation: {x: 0.0040594377, y: -2.8804958e-11, z: 5.44937e-10, w: 0.99999183}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: Neck_eD_blue
+      parentName: Spine2_eD_blue
+      position: {x: -1.0842021e-21, y: 0.07296806, z: 0.00007706009}
+      rotation: {x: 0.020686945, y: -0.0000000014980008, z: 0.0000000015047024, w: 0.9997861}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Head_eD_blue
+      parentName: Neck_eD_blue
+      position: {x: -1.0842021e-21, y: 0.06659443, z: 0.0008862073}
+      rotation: {x: -0, y: 7.131572e-10, z: 0.0000000019607256, w: 1}
+      scale: {x: 1, y: 0.9999998, z: 1}
+    - name: HeadTop_End_eD_blue
+      parentName: Head_eD_blue
+      position: {x: 6.8955254e-19, y: 0.3925767, z: 0.006079476}
+      rotation: {x: 1.03397564e-25, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: LeftShoulder_eD_blue
+      parentName: Spine2_eD_blue
+      position: {x: -0.06249239, y: 0.064561345, z: -0.013067639}
+      rotation: {x: 0.5482828, y: -0.4433087, z: 0.57128745, w: 0.420112}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1}
+    - name: LeftArm_eD_blue
+      parentName: LeftShoulder_eD_blue
+      position: {x: 5.10272e-11, y: 0.0795853, z: -0.0000000010001142}
+      rotation: {x: -0.10853294, y: -0.010343742, z: -0.05876962, w: 0.9923002}
+      scale: {x: 1, y: 0.9999998, z: 1.0000005}
+    - name: LeftForeArm_eD_blue
+      parentName: LeftArm_eD_blue
+      position: {x: 3.992966e-11, y: 0.107923575, z: 3.165283e-11}
+      rotation: {x: -0.020399928, y: 0.0025272584, z: 0.0002419251, w: 0.99978864}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1}
+    - name: LeftHand_eD_blue
+      parentName: LeftForeArm_eD_blue
+      position: {x: 1.3087316e-10, y: 0.090099074, z: 1.5429222e-11}
+      rotation: {x: -0.013022212, y: -0.025314275, z: 0.022574447, w: 0.9993398}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000002}
+    - name: dagger1
+      parentName: LeftHand_eD_blue
+      position: {x: 0.010269613, y: 0.061924934, z: 0.009420735}
+      rotation: {x: 0.032365132, y: 0.040723093, z: -0.697299, w: 0.7148904}
+      scale: {x: 3.048494, y: 3.048494, z: 3.048494}
+    - name: Lefttip_eD_blue
+      parentName: LeftHand_eD_blue
+      position: {x: 0.008894629, y: 0.07450844, z: -0.0012013015}
+      rotation: {x: -0.0019432574, y: -0.0000031162049, z: 0.0015879854, w: 0.99999684}
+      scale: {x: 1.0000005, y: 1.0000008, z: 1.0000005}
+    - name: RightShoulder_eD_blue
+      parentName: Spine2_eD_blue
+      position: {x: 0.06248996, y: 0.064559996, z: -0.01307}
+      rotation: {x: -0.40520042, y: 0.5480545, z: 0.46720007, w: 0.5631811}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000004}
+    - name: RightArm_eD_blue
+      parentName: RightShoulder_eD_blue
+      position: {x: 0.00000085141653, y: -0.07958545, z: -0.00000063004296}
+      rotation: {x: -0.09883508, y: 0.0087418845, z: -0.04988975, w: 0.993814}
+      scale: {x: 1.0000002, y: 0.99999994, z: 1}
+    - name: RightForeArm_eD_blue
+      parentName: RightArm_eD_blue
+      position: {x: -0.0008705689, y: -0.105445795, z: 0.00007846632}
+      rotation: {x: -0.0072557162, y: 0.008195339, z: -0.005351754, w: 0.99992585}
+      scale: {x: 1, y: 1.0000002, z: 1.0000004}
+    - name: RightHand_eD_blue
+      parentName: RightForeArm_eD_blue
+      position: {x: -0.00008179373, y: -0.09179118, z: 0.0038327547}
+      rotation: {x: 0.000000039115548, y: -0.000000026077032, z: 0.000000016880222, w: 1}
+      scale: {x: 1.0000002, y: 0.99999994, z: 1}
+    - name: dagger2
+      parentName: RightHand_eD_blue
+      position: {x: -0.008388281, y: -0.063233025, z: -0.007847169}
+      rotation: {x: 0.72666603, y: -0.68670166, z: -0.0095785875, w: -0.017482193}
+      scale: {x: 3.048494, y: 3.048494, z: 3.048494}
+    - name: Righttip_eD_blue
+      parentName: RightHand_eD_blue
+      position: {x: -0.0029895306, y: -0.08178179, z: -0.00039554382}
+      rotation: {x: 0.6114622, y: -0.0009662325, z: -0.0012603742, w: -0.7912721}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: LeftUpLeg_eD_blue
+      parentName: Hips_eD_blue
+      position: {x: -0.07444126, y: -0.042105626, z: 0.0030382462}
+      rotation: {x: -0.0017072441, y: -0.0024827018, z: 0.99588853, w: 0.09053721}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: LeftLeg_eD_blue
+      parentName: LeftUpLeg_eD_blue
+      position: {x: 0.00082068914, y: 0.15848722, z: 0.0006895034}
+      rotation: {x: -0.082090825, y: -0.0007246725, z: 0.008797625, w: 0.9965858}
+      scale: {x: 1.0000005, y: 1.0000004, z: 1.0000001}
+    - name: LeftFoot_eD_blue
+      parentName: LeftLeg_eD_blue
+      position: {x: 0.000022831764, y: 0.12543416, z: 0.000014964588}
+      rotation: {x: 0.5221352, y: -0.0038070986, z: 0.011645333, w: 0.85277474}
+      scale: {x: 1.0000006, y: 1.0000005, z: 1.0000001}
+    - name: LeftToeBase_eD_blue
+      parentName: LeftFoot_eD_blue
+      position: {x: 0.000032303054, y: 0.07890292, z: -0.003154739}
+      rotation: {x: 0.28105798, y: 0.008327047, z: -0.0024387827, w: 0.9596515}
+      scale: {x: 1.0000006, y: 1.0000005, z: 1.0000007}
+    - name: LeftToe_End_eD_blue
+      parentName: LeftToeBase_eD_blue
+      position: {x: -0.00011906705, y: 0.053750258, z: 0.00006604175}
+      rotation: {x: -0.000000029802319, y: -0, z: 2.3283062e-10, w: 1}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000002}
+    - name: RightUpLeg_eD_blue
+      parentName: Hips_eD_blue
+      position: {x: 0.074439995, y: -0.042105626, z: 0.0030382462}
+      rotation: {x: -0.0021001797, y: -0.002160508, z: 0.99694127, w: -0.07809698}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: RightLeg_eD_blue
+      parentName: RightUpLeg_eD_blue
+      position: {x: 0.00082068914, y: 0.15848722, z: 0.0006895034}
+      rotation: {x: -0.08209082, y: -0.0007247064, z: 0.008797631, w: 0.9965857}
+      scale: {x: 0.9999999, y: 0.99999964, z: 1}
+    - name: RightFoot_eD_blue
+      parentName: RightLeg_eD_blue
+      position: {x: 0.000022831764, y: 0.12543416, z: 0.000014964588}
+      rotation: {x: 0.52213514, y: -0.0038070832, z: 0.011645309, w: 0.8527748}
+      scale: {x: 0.9999998, y: 0.9999998, z: 0.99999994}
+    - name: RightToeBase_eD_blue
+      parentName: RightFoot_eD_blue
+      position: {x: 0.000032303054, y: 0.07890292, z: -0.003154739}
+      rotation: {x: 0.28105798, y: 0.008327088, z: -0.0024387734, w: 0.9596515}
+      scale: {x: 1.0000006, y: 1.0000002, z: 1.0000004}
+    - name: RightToe_End_eD_blue
+      parentName: RightToeBase_eD_blue
+      position: {x: -0.00011906705, y: 0.053750258, z: 0.00006604175}
+      rotation: {x: -0.000000029802319, y: -0, z: -2.3283062e-10, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -94,13 +607,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0

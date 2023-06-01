@@ -18,6 +18,7 @@ TagManager:
   - Slider
   - Activator
   - GoblinBlast
+  - Archer
   layers:
   - Default
   - TransparentFX

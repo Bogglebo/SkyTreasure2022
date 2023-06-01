@@ -11,22 +11,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: egyptian_B_texture
-    second: {fileID: 2100000, guid: a7745b769fa2aa7489e20a1be0f7eb43, type: 2}
+    second: {fileID: 2100000, guid: 7b8c8222338336440bef0f96b805ce62, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: egyptian_weapons_texture
-    second: {fileID: 2100000, guid: 574dd14d585f3f44bb1a0ec2c0424563, type: 2}
+    second: {fileID: 2100000, guid: 770ea376c0400b84fbb1f98d3c76382a, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: egyptian_green_B_texture
-    second: {fileID: 2800000, guid: 1986fc211b912f24bab313c70eb2fc6e, type: 3}
+    second: {fileID: 2800000, guid: f0d47b4c38508f947be4aa552368d1a3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: egyptian_weapons_texture
-    second: {fileID: 2800000, guid: b4a9e6751f2ebf54dbc6e5fa281240ad, type: 3}
+    second: {fileID: 2800000, guid: 71f308b1d89d2c14183a90ae75790609, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
