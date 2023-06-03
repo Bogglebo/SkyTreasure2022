@@ -19,6 +19,7 @@ TagManager:
   - Activator
   - GoblinBlast
   - Archer
+  - WarriorBoss
   layers:
   - Default
   - TransparentFX

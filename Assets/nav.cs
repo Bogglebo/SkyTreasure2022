@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarriorSpell : MonoBehaviour
+public class nav : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
