@@ -53,11 +53,14 @@ public class AiAgent : MonoBehaviour
         {   // if nearing the patrol point, move to the next one
             if (!agent.pathPending && agent.remainingDistance < agent.stoppingDistance)
             {
+                transform.LookAt(patrolPoints[currentPatrolPoint].position);
                 NextPatrolPoint();
             }
         }
         else if (isChasing)     // The player is within the chase range set in the inspector
         {
+            transform.LookAt(player.transform.position);
+            agent.transform.rotation = Quaternion.Euler(0f, agent.transform.rotation.eulerAngles.y, 0f);
             agent.SetDestination(player.position);
 
             if (agent.remainingDistance <= agent.stoppingDistance)

@@ -59,7 +59,6 @@ public class EnemyHealthController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             EnemyDamaged();
-
         }
     }
 }

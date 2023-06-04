@@ -20,7 +20,7 @@ public class EndLevelTotals : MonoBehaviour
         totalScore = PlayerPrefs.GetInt("Player Score");
         totalTreasure = PlayerPrefs.GetInt("Treasure Count");
         // Display information
-        scoreText.text = "Total Score: " + totalScore + " of 15000";
+        scoreText.text = "Total Score: " + totalScore + " of 15650";
         treasureText.text = "Total Treasure: " + totalTreasure + " of 77";
     }
 }

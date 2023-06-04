@@ -47,7 +47,6 @@ public class SystemController : MonoBehaviour
         {
             respawnPosition = PlayerController.instance.transform.position;
             AiAgent.enemyCount = 0;
-            Debug.Log("Enemy count at start of level is " + AiAgent.enemyCount);
         }
         else
         {
@@ -88,6 +87,12 @@ public class SystemController : MonoBehaviour
             new Vector3(0f, 1f, 0f), PlayerController.instance.transform.rotation);
         // Deactivate the player and wait for 2 seconds before respawning
         yield return new WaitForSeconds(2f);
+
+        if (ScoreController.instance.theScore > 0)
+        {
+            ScoreController.instance.UpdateScore(-50);
+        }
+
 
         //  If the boss hasn't already been killed, reset boss to full health when player dies
         if ((reloadBossHealth) && (!bossKilled))

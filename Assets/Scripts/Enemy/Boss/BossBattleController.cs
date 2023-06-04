@@ -46,9 +46,7 @@ public class BossBattleController : MonoBehaviour
         {
             Instantiate(bossEffect, bossChild.transform.position, bossChild.transform.rotation);
         }
-
         spellCounter = timeBetweenSpells;
-
     }
 
     // Update is called once per frame

@@ -4,6 +4,7 @@ using UnityEngine.AI;
 // Script to control enemies
 public class EnemyController : MonoBehaviour
 {
+    PlayerController player;
     // List of points the enemy can go to
     public Transform[] patrolPoints;
     public int currentPatrolPoint;
@@ -29,6 +30,7 @@ public class EnemyController : MonoBehaviour
     {
         waitCounter = waitAtPoint;
         currentPatrolPoint = Random.Range(0, patrolPoints.Length);
+        player = PlayerController.instance;
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class EnemyController : MonoBehaviour
     {
         // How far away from the player is the enemy
         float distanceToPlayer = Vector3.Distance(transform.position,
-            PlayerController.instance.transform.position);
+            player.transform.position);
 
         switch (currentState)
         {
@@ -82,7 +84,10 @@ public class EnemyController : MonoBehaviour
                 animator.SetBool("IsMoving", true);
                 break;
             case AIState.isChasing:
-                agent.SetDestination(PlayerController.instance.transform.position);
+                agent.SetDestination(player.transform.position);
+                agent.transform.LookAt(player.transform.position);
+                agent.transform.rotation = Quaternion.Euler(0f, agent.transform.rotation.eulerAngles.y, 0f);
+   
                 // Trigger attack
                 if (distanceToPlayer <= attackRange)
                 {
@@ -100,12 +105,14 @@ public class EnemyController : MonoBehaviour
                     currentState = AIState.isIdle;
                     waitCounter = waitAtPoint;
                     agent.velocity = Vector3.zero;
+                    agent.transform.LookAt(player.transform.position);
+                    agent.transform.rotation = Quaternion.Euler(0f, agent.transform.rotation.eulerAngles.y, 0f);
                     agent.SetDestination(transform.position);
                 }
                 break;
             case AIState.isAttacking:
                 // Ensure the enemy faces the player
-                transform.LookAt(PlayerController.instance.transform, Vector3.up);
+                transform.LookAt(player.transform, Vector3.up);
                 transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
                 // If the enemy is still near the player attack again
                 attackCounter -= Time.deltaTime;
