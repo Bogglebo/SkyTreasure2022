@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class LevelEnd : MonoBehaviour
 {
+    public ScoreController scoreController;
+
+    private void Start()
+    {
+        scoreController = ScoreController.instance;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.SceneManagement;
 
 public class AiAgent : MonoBehaviour
 {
@@ -120,14 +120,18 @@ public class AiAgent : MonoBehaviour
     public void EnemyDamaged()
     {
         AudioController.instance.PlayFX(5);
-        ScoreController.instance.UpdateScore(150);
+        // Don't add to the score for Level 2 boss until all warriors are dead
+        if (SceneManager.GetActiveScene().name != "Level02Boss")
+        {
+            ScoreController.instance.UpdateScore(150);
+        }
         Destroy(gameObject);
         PlayerController.instance.Bounce();
         Instantiate(deathEffect, transform.position +
             new Vector3(0, 1.5f, 0f), transform.rotation);
         // When 5 enemies are killed open entry to the next level
         enemyCount++;
-        if (enemyCount == 5)
+        if (enemyCount == 5) 
         {
             portal.SetActive(true);
             levelTrigger.SetActive(true);
