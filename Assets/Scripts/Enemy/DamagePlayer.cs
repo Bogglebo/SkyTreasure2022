@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// Script to facilitate damage to player
+// Script to facilitate damage to player from items
 public class DamagePlayer : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
