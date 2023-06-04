@@ -120,7 +120,7 @@ public class AiAgent : MonoBehaviour
         currentPatrolPoint = (currentPatrolPoint + 1) % patrolPoints.Length;
     }
 
-    public void EnemyDamaged()
+    public void AIEnemyDamaged()
     {
         AudioController.instance.PlayFX(5);
         // Don't add to the score for Level 2 boss until all warriors are dead
@@ -151,7 +151,7 @@ public class AiAgent : MonoBehaviour
             // Deal melee damage to the enemy
             if (other.name == "Amy")  // The box collider on the player childs feet
             {
-                EnemyDamaged();
+                AIEnemyDamaged();
             }
             else
             {  // Deal melee damage to the player from the box collider on the sword
