@@ -661,11 +661,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4247653352283178070, guid: ea05df87d92fb634da99cbc60ccf6e71, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000754025
+      value: -0.0007540536
       objectReference: {fileID: 0}
     - target: {fileID: 4247653352283178070, guid: ea05df87d92fb634da99cbc60ccf6e71, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00022632028
+      value: 0.00022632885
       objectReference: {fileID: 0}
     - target: {fileID: 4247653352283178070, guid: ea05df87d92fb634da99cbc60ccf6e71, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -725,11 +725,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4247653352472790860, guid: ea05df87d92fb634da99cbc60ccf6e71, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000032336484
+      value: 0.0000000018136924
       objectReference: {fileID: 0}
     - target: {fileID: 4247653352472790860, guid: ea05df87d92fb634da99cbc60ccf6e71, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000010301126
+      value: -0.0000000017981528
       objectReference: {fileID: 0}
     - target: {fileID: 4247653353126131866, guid: ea05df87d92fb634da99cbc60ccf6e71, type: 3}
       propertyPath: m_LocalPosition.x
@@ -753,11 +753,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4247653353126131866, guid: ea05df87d92fb634da99cbc60ccf6e71, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000032713785
+      value: 0.0000000019553514
       objectReference: {fileID: 0}
     - target: {fileID: 4247653353126131866, guid: ea05df87d92fb634da99cbc60ccf6e71, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000009142244
+      value: -0.0000000017500685
       objectReference: {fileID: 0}
     - target: {fileID: 4247653353797452564, guid: ea05df87d92fb634da99cbc60ccf6e71, type: 3}
       propertyPath: m_LocalPosition.x
@@ -781,11 +781,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4247653353797452564, guid: ea05df87d92fb634da99cbc60ccf6e71, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000046763482
+      value: -0.0000000127563045
       objectReference: {fileID: 0}
     - target: {fileID: 4247653353797452564, guid: ea05df87d92fb634da99cbc60ccf6e71, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000013401484
+      value: 0.0000000020189512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea05df87d92fb634da99cbc60ccf6e71, type: 3}
@@ -1268,7 +1268,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5485344174251406223}
+  - {fileID: 1962449163017810148}
+  - {fileID: 1259882461577956677}
+  - {fileID: 8792961414557008500}
+  - {fileID: 2554990194453899209}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15724,7 +15729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c77e4ad3ee00b14e967cd5cf522cd7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEffect: {fileID: 7150823019229704890, guid: aad642fc445947f4489d6a05c8537756, type: 3}
+  deathEffect: {fileID: 4141062625988417624, guid: b8b0fdadfb2aea94a86952fc6fb140f6, type: 3}
   portal: {fileID: 1433743891}
   levelTrigger: {fileID: 100000, guid: e5d3115b5fab7f24bbe8871f1d6feab3, type: 3}
   patrolPoints:
@@ -15943,15 +15948,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889208095778347007}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: -0.5, y: 0.5, z: -3.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2086419520266696040}
   - {fileID: 2301399234695008388}
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 833192922}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &1261721226490875056
 Transform:
@@ -17347,7 +17352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c77e4ad3ee00b14e967cd5cf522cd7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEffect: {fileID: 7150823019229704890, guid: aad642fc445947f4489d6a05c8537756, type: 3}
+  deathEffect: {fileID: 8005956786416512607, guid: 93eee5c5b3de04e469a91490f4d2ffd7, type: 3}
   portal: {fileID: 1433743891}
   levelTrigger: {fileID: 100000, guid: e5d3115b5fab7f24bbe8871f1d6feab3, type: 3}
   patrolPoints:
@@ -17462,8 +17467,8 @@ Transform:
   m_Children:
   - {fileID: 6688902620400108331}
   - {fileID: 4578100838834169646}
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 833192922}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &1983437287893238397
 BoxCollider:
@@ -23405,15 +23410,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2900026407658175859}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.86, y: 0.5, z: -1.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5839176316040781169}
   - {fileID: 4672589943695180403}
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 833192922}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2559285840929025095
 Transform:
@@ -31437,15 +31442,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5139746107205822773}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 5.57, y: 0.5, z: 5.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1519384177410542524}
   - {fileID: 1623724511720483438}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 833192922}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &5496171035410830981
 BoxCollider:
@@ -50834,7 +50839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c77e4ad3ee00b14e967cd5cf522cd7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEffect: {fileID: 7150823019229704890, guid: aad642fc445947f4489d6a05c8537756, type: 3}
+  deathEffect: {fileID: 4141062625988417624, guid: b8b0fdadfb2aea94a86952fc6fb140f6, type: 3}
   portal: {fileID: 1433743891}
   levelTrigger: {fileID: 100000, guid: e5d3115b5fab7f24bbe8871f1d6feab3, type: 3}
   patrolPoints:
@@ -51691,7 +51696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c77e4ad3ee00b14e967cd5cf522cd7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEffect: {fileID: 7150823019229704890, guid: aad642fc445947f4489d6a05c8537756, type: 3}
+  deathEffect: {fileID: 8005956786416512607, guid: 93eee5c5b3de04e469a91490f4d2ffd7, type: 3}
   portal: {fileID: 1433743891}
   levelTrigger: {fileID: 100000, guid: e5d3115b5fab7f24bbe8871f1d6feab3, type: 3}
   patrolPoints:
@@ -52450,15 +52455,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8164198730595260622}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.67, y: 0.5, z: -5.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2467195653268427880}
   - {fileID: 8499874035174464044}
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 833192922}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8801555219239908254
 BoxCollider:

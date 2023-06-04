@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Level2BossActivator : MonoBehaviour
@@ -13,7 +11,7 @@ public class Level2BossActivator : MonoBehaviour
         {
             // Make the boss appear
             AudioController.instance.PlayFX(7);
-            foreach(GameObject go in warriors)
+            foreach (GameObject go in warriors)
             {
                 go.SetActive(true);
             }

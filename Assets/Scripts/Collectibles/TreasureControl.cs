@@ -1,17 +1,14 @@
-using JetBrains.Annotations;
 using System.Collections;
-using System.Diagnostics.Tracing;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class TreasureControl : MonoBehaviour
-    // Script to control combination of Treasure Chest animations & score
+// Script to control combination of Treasure Chest animations & score
 {
     // Variables to turn visibility on/off for various parts of chest
     public GameObject chestClosed, chestOpen, chestCoins;
     public int objectAmount = 500;        // Score value of chest
     // Counter to control how many times coroutine updates Score & Treasure count
-    public int counter = 0; 
+    public int counter = 0;
 
     // Start is called before the first frame update
     void Start()

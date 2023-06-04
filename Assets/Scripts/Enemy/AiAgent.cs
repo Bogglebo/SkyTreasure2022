@@ -131,7 +131,7 @@ public class AiAgent : MonoBehaviour
             new Vector3(0, 1.5f, 0f), transform.rotation);
         // When 5 enemies are killed open entry to the next level
         enemyCount++;
-        if (enemyCount == 5) 
+        if (enemyCount == 5)
         {
             portal.SetActive(true);
             levelTrigger.SetActive(true);

@@ -38,7 +38,12 @@ public class SystemController : MonoBehaviour
 
         // Set an alternative player respawn position for Level01Boss Fight
         string sceneName = SceneManager.GetActiveScene().name;
-        if ((sceneName == "Level01Boss")  || (sceneName =="Level02Boss"))
+        if (sceneName == "Level01")
+        {
+            ScoreController.instance.theScore = 0;
+            ScoreController.instance.treasureCount = 0;
+        }
+        if ((sceneName == "Level01Boss") || (sceneName == "Level02Boss"))
         {
             respawnPosition = PlayerController.instance.transform.position;
             AiAgent.enemyCount = 0;
@@ -96,7 +101,7 @@ public class SystemController : MonoBehaviour
             // Reset the player's health and fade the UI back in
             HealthController.instance.ResetHealth();
             UIController.instance.fadeFromBlack = true;
-            
+
             // Respawn the player and camera at their designated positions
             PlayerController.instance.transform.position = respawnPosition;
             CameraController.instance.transform.position = cameraSpawnPosition;
@@ -139,8 +144,9 @@ public class SystemController : MonoBehaviour
         // Add the score for killing 5 warriors and completing the level
         if (SceneManager.GetActiveScene().name == "Level02Boss")
         {
-            ScoreController.instance.UpdateScore(1750);
-        } else // Add the score for completing a level
+            ScoreController.instance.UpdateScore(2000);
+        }
+        else // Add the score for completing a level
         {
             ScoreController.instance.UpdateScore(1000);
         }
@@ -149,7 +155,6 @@ public class SystemController : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         yield return new WaitForSeconds(1f);
-        Debug.Log("Next Level to load is: " + nextLevel);
         SceneManager.LoadScene(nextLevel);
     }
 }
