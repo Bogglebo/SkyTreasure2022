@@ -11531,7 +11531,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -20939,6 +20939,18 @@ PrefabInstance:
     - target: {fileID: 1719753067891562063, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: orthographic size
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719753067891562063, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719753067891562063, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.9913522
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719753067891562063, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.9858491
       objectReference: {fileID: 0}
     - target: {fileID: 1719753068492263690, guid: 2db7baa5c4007774792a1efe71445df2, type: 3}
       propertyPath: m_LocalRotation.w
