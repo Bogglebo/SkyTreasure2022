@@ -9650,14 +9650,14 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.3
   m_Speed: 4
-  m_Acceleration: 2
+  m_Acceleration: 8
   avoidancePriority: 53
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 1.75
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.75
+  m_Height: 1.4
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -11169,7 +11169,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.25
+  m_Height: 1.4
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -18050,11 +18050,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2554990194453899209}
-  - component: {fileID: 8472690226936561075}
   - component: {fileID: 8472690226936561073}
+  - component: {fileID: 8472690226936561079}
+  - component: {fileID: 8472690226936561075}
   - component: {fileID: 8472690226936561072}
   - component: {fileID: 8472690226936561078}
-  - component: {fileID: 8472690226936561079}
   m_Layer: 0
   m_Name: viking_C
   m_TagString: Untagged
@@ -23280,10 +23280,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5485344174251406223}
-  - component: {fileID: 1945545840353257973}
-  - component: {fileID: 1945545840353257968}
   - component: {fileID: 1945545840353257970}
   - component: {fileID: 1945545840353257969}
+  - component: {fileID: 1945545840353257973}
+  - component: {fileID: 1945545840353257968}
   - component: {fileID: 1945545840353257982}
   m_Layer: 0
   m_Name: egyptian_BBlue
@@ -42827,9 +42827,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8792961414557008500}
-  - component: {fileID: 3235540586238760974}
   - component: {fileID: 8164198730595260618}
   - component: {fileID: 8164198730595260619}
+  - component: {fileID: 3235540586238760974}
   - component: {fileID: 8164198730595260620}
   - component: {fileID: 8164198730595260621}
   m_Layer: 0
@@ -43480,7 +43480,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.25
+  m_Height: 1.4
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
